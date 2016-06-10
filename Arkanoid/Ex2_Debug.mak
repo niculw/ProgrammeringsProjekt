@@ -56,6 +56,8 @@ clean:
             del C:\Users\S143217\Desktop\Arkanoid\StopWatch.obj
 	@if exist C:\Users\S143217\Desktop\Arkanoid\initLevel.obj  \
             del C:\Users\S143217\Desktop\Arkanoid\initLevel.obj
+	@if exist C:\Users\S143217\Desktop\Arkanoid\Striker.obj  \
+            del C:\Users\S143217\Desktop\Arkanoid\Striker.obj
 
 rebuildall: clean Debug
 
@@ -70,7 +72,8 @@ OBJS =  \
             C:\Users\S143217\Desktop\Arkanoid\lut.obj  \
             C:\Users\S143217\Desktop\Arkanoid\LED.obj  \
             C:\Users\S143217\Desktop\Arkanoid\StopWatch.obj  \
-            C:\Users\S143217\Desktop\Arkanoid\initLevel.obj
+            C:\Users\S143217\Desktop\Arkanoid\initLevel.obj  \
+            C:\Users\S143217\Desktop\Arkanoid\Striker.obj
 
 Ex2: $(OBJS)
 	 $(LINK)  @C:\Users\S143217\Desktop\Arkanoid\Ex2_Debug.linkcmd
@@ -85,6 +88,7 @@ C:\Users\S143217\Desktop\Arkanoid\main.obj :  \
             C:\Users\S143217\Desktop\Arkanoid\ANSIproject\main.c  \
             C:\Users\S143217\Desktop\Arkanoid\include\LED.h  \
             C:\Users\S143217\Desktop\Arkanoid\include\STOPWA~1.H  \
+            C:\Users\S143217\Desktop\Arkanoid\include\Striker.h  \
             C:\Users\S143217\Desktop\Arkanoid\include\ansi.h  \
             C:\Users\S143217\Desktop\Arkanoid\include\INITLE~1.H  \
             C:\Users\S143217\Desktop\Arkanoid\include\lut.h  \
@@ -169,4 +173,22 @@ C:\Users\S143217\Desktop\Arkanoid\initLevel.obj :  \
             c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\uart.h  \
             c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\uartdefs.h
 	 $(CC)  $(CFLAGS) C:\Users\S143217\Desktop\Arkanoid\include\src\initLevel.c
+
+C:\Users\S143217\Desktop\Arkanoid\Striker.obj :  \
+            C:\Users\S143217\Desktop\Arkanoid\include\src\Striker.c  \
+            C:\Users\S143217\Desktop\Arkanoid\include\Striker.h  \
+            C:\Users\S143217\Desktop\Arkanoid\include\ansi.h  \
+            c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\FORMAT.H  \
+            c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDARG.H  \
+            c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDIO.H  \
+            c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\FORMAT.H  \
+            c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std\STDARG.H  \
+            c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\defines.h  \
+            c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\dmadefs.h  \
+            c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\ez8.h  \
+            c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\gpio.h  \
+            c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\SIO.H  \
+            c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\uart.h  \
+            c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\uartdefs.h
+	 $(CC)  $(CFLAGS) C:\Users\S143217\Desktop\Arkanoid\include\src\Striker.c
 

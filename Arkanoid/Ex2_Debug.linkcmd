@@ -71,6 +71,7 @@ define __user_frequency = 18432000
  .\LED.obj, \
  .\StopWatch.obj, \
  .\initLevel.obj, \
+ .\Striker.obj, \
  c:\PROGRA~2\ZiLOG\ZDSII_~1.3\lib\std\crtrevaaLDD.lib, \
  c:\PROGRA~2\ZiLOG\ZDSII_~1.3\lib\std\fpdumyL.obj, \
  c:\PROGRA~2\ZiLOG\ZDSII_~1.3\lib\zilog\zslLYD.lib

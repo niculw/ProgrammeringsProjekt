@@ -8,12 +8,11 @@
 #include "LED.h"
 #include "StopWatch.h"
 #include "initLevel.h"
+#include "Striker.h"
 
 #define FIX14_SHIFT 2
 #define FIX14_MULT(a, b) ( (a)*(b) >> FIX14_SHIFT )
 #define FIX14_DIV(a, b) ( ((a) << FIX14_SHIFT) / (b) )
-
-
 
 struct TVector {
 	long x,y;
@@ -68,20 +67,21 @@ void ledcontrol( int number ){
 	PEOUT &= 0xBF;
 }
 
-
-
 void main() {
-	int i;
+	int i, knapKonstant = 0;
 	int k = 0, j = 0;
+	short strikerPosition = 80;		/// vi starter på midsten af skærmen
 	char oldkey = 0 , newkey;
-	char str[] = "En To";
+	char str[] = "ELEKTRO!!";
 //	struct TVector V1;
 //	struct TVector V2;
 //	struct TVector V3;
 //	struct time watch;
-//	keysetup();						// 
+	keysetup();						// sæt registre til knapperne
 //	initCounter();					// initialise counter for 100 hz refresh inteval.
 	init_uart(_UART0,_DEFFREQ,_DEFBAUD);
+	
+	printf("%c[?25l",0x1B);
 
 	color(1,0);
 	gotoxy(1,1);
@@ -90,6 +90,9 @@ void main() {
 	LEDinit();
 
 	drawBorder(2);
+	initStriker();
+	//drawStriker( 80 );
+	
 
 	//EI();
 	//window(2, 2, 25, 7, "Hej You ", 0);
@@ -104,11 +107,31 @@ void main() {
 	printf("After rotation: %d,%d\n", V1.x  >> 14 , V1.y >> 14);
 */
 	do {
-	LEDupdate();
-	mellemled( str , strlen(str) );
-	
+//	LEDupdate();
+//	mellemled( str , strlen(str) );
 
-	/*
+	newkey = readKey();
+	if( 0 != newkey ){											// hvis vi ahr trykket på en knap
+		if ( knapKonstant == 0 ) {								
+			knapKonstant = 500;
+			//oldkey = newkey;
+			if ( 1 == newkey && strikerPosition < 156 ){
+				strikerPosition++;
+			} else if ( 4 == newkey && strikerPosition > 2) {
+				strikerPosition--;
+			}
+			drawStriker( strikerPosition );
+		} else {
+			knapKonstant--;
+		} 
+	} else {
+		knapKonstant = 0;
+	}
+
+
+	//moveStriker();
+
+/*
 	if ( ( newkey != 0) && (oldkey != newkey) ){
 			k++;
 			gotoxy(3,3);
@@ -117,7 +140,7 @@ void main() {
 		} else if (newkey == 0) {
 			oldkey = 0;
 	}
-	*/
+*/
 //	calcTime( &watch );
 //	ledcontrol( k );
 //	printtime( &watch );

@@ -41,3 +41,4 @@ void drawBorder( int style ){
 	gotoxy(171, 1);
 	printf("%c", a[style][1]);
 }
+

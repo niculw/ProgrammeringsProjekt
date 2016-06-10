@@ -10,6 +10,7 @@
 <file filter-key="">include\src\LED.c</file>
 <file filter-key="">include\src\StopWatch.c</file>
 <file filter-key="">include\src\initLevel.c</file>
+<file filter-key="">include\src\Striker.c</file>
 </files>
 
 <!-- configuration information -->
