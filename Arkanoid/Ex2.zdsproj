@@ -9,6 +9,7 @@
 <file filter-key="">include\src\lut.c</file>
 <file filter-key="">include\src\LED.c</file>
 <file filter-key="">include\src\StopWatch.c</file>
+<file filter-key="">include\src\initLevel.c</file>
 </files>
 
 <!-- configuration information -->
@@ -219,7 +220,7 @@
 <option name="shortsize" type="integer" change-action="rebuild">16</option>
 <option name="stdinc" type="string" change-action="compile"></option>
 <option name="strict" type="boolean" change-action="compile">true</option>
-<option name="usrinc" type="string" change-action="compile">M:\Documents\30010_Programerings_Projekt\Project\include;M:\Documents\30010_Programerings_Projekt\Project;M:\Documents\30010_Programerings_Projekt\Project\include;C:\Users\S143217\Desktop\Project\include</option>
+<option name="usrinc" type="string" change-action="compile">M:\Documents\30010_Programerings_Projekt\PArkanoid\include;M:\Documents\30010_Programerings_Projekt\Project;M:\Documents\30010_Programerings_Projekt\Project\include;C:\Users\S143217\Desktop\Project\include;C:\Users\S143217\Desktop\Arkanoid\include</option>
 <option name="watch" type="boolean" change-action="none">false</option>
 </options>
 </tool>

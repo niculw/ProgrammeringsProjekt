@@ -12,7 +12,7 @@
 /* -NOsdiopt -shortsize:16 */
 /* -stdinc:"c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std;c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog;c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\Z8Encore_F640X" */
 /* -strict */
-/* -usrinc:"M:\Documents\30010_Programerings_Projekt\Project\include;M:\Documents\30010_Programerings_Projekt\Project;C:\Users\S143217\Desktop\Project\include" */
+/* -usrinc:"M:\Documents\30010_Programerings_Projekt\PArkanoid\include;M:\Documents\30010_Programerings_Projekt\Project;M:\Documents\30010_Programerings_Projekt\Project\include;C:\Users\S143217\Desktop\Project\include;C:\Users\S143217\Desktop\Arkanoid\include" */
 /* -NOwatch -cpu:Z8F6403 */
 /* -asmsw:" -cpu:Z8F6403 -define:_Z8F6403=1 -define:_Z8ENCORE_640_FAMILY=1 -define:_Z8ENCORE_F640X=1 -define:_MODEL_LARGE=1 -include:c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\std;c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog;c:\PROGRA~2\ZiLOG\ZDSII_~1.3\include\zilog\Z8Encore_F640X -revaa" */
 
@@ -62,7 +62,7 @@ define _zsl_g_clock_xdefine = 18432000
 /* Set frequency to 18432000 Hz */
 define __user_frequency = 18432000
 
-"C:\Users\S143217\Desktop\Project\Ex2"= \
+"C:\Users\S143217\Desktop\Arkanoid\Ex2"= \
  c:\PROGRA~2\ZiLOG\ZDSII_~1.3\lib\zilog\startupL.obj, \
  .\zsldevinit.obj, \
  .\main.obj, \
@@ -70,6 +70,7 @@ define __user_frequency = 18432000
  .\lut.obj, \
  .\LED.obj, \
  .\StopWatch.obj, \
+ .\initLevel.obj, \
  c:\PROGRA~2\ZiLOG\ZDSII_~1.3\lib\std\crtrevaaLDD.lib, \
  c:\PROGRA~2\ZiLOG\ZDSII_~1.3\lib\std\fpdumyL.obj, \
  c:\PROGRA~2\ZiLOG\ZDSII_~1.3\lib\zilog\zslLYD.lib

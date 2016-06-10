@@ -1,11 +1,13 @@
 #include <eZ8.h>             // special encore constants, macros and flash routines
 #include <sio.h>             // special encore serial i/o routines
+#include <string.h>
+
 #include "ansi.h"
 #include "lut.h"
 //#include "charset.h"		 // indkluderet i LED.c
 #include "LED.h"
 #include "StopWatch.h"
-#include <string.h>
+#include "initLevel.h"
 
 #define FIX14_SHIFT 2
 #define FIX14_MULT(a, b) ( (a)*(b) >> FIX14_SHIFT )
@@ -72,7 +74,7 @@ void main() {
 	int i;
 	int k = 0, j = 0;
 	char oldkey = 0 , newkey;
-	char str[] = "E";
+	char str[] = "En To";
 //	struct TVector V1;
 //	struct TVector V2;
 //	struct TVector V3;
@@ -81,14 +83,17 @@ void main() {
 //	initCounter();					// initialise counter for 100 hz refresh inteval.
 	init_uart(_UART0,_DEFFREQ,_DEFBAUD);
 
-	color(7,0);
+	color(1,0);
 	gotoxy(1,1);
 	clrscr();
 	
 	LEDinit();
+
+	drawBorder(2);
+
 	//EI();
 	//window(2, 2, 25, 7, "Hej You ", 0);
-	window(5, 5, 40, 12, "Stop Watch  ", 1);
+//	window(5, 5, 40, 12, "Stop Watch  ", 1);
 	
 	//LEDsetString("123456789abcdefghijlk");
 
