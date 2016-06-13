@@ -2,10 +2,7 @@
 #include <sio.h>             // special encore serial i/o routines
 #include "ansi.h"
 #include "Striker.h"
-
-#define RESOLUTION_X 171
-#define RESOLUTION_Y 61
-#define STRIKER_WIDTH 15		// skal kunne deles med 5
+#include "defines.h"
 
 void initStriker(){
 	int i;
