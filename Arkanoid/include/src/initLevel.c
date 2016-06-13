@@ -2,9 +2,7 @@
 #include <sio.h>             // special encore serial i/o routines
 
 #include "ansi.h"
-
-#define RESOLUTION_X 171
-#define RESOLUTION_Y 61
+#include "defines.h"
 
 void drawBorder( int style ){ 
 	int x, y;
