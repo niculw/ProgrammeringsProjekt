@@ -494,6 +494,8 @@ ptn_Child2=Document-1
 ptn_Child3=Document-2
 ptn_Child4=Document-3
 ptn_Child5=Document-4
+ptn_Child6=Document-5
+ptn_Child7=Document-6
 
 [WorkState_v1_1.Frames.ChildFrames.Document-0]
 ptn_Child1=ViewFrame-0
@@ -502,8 +504,8 @@ ptn_Child1=ViewFrame-0
 DocPathName=ANSIproject\main.c
 DocTemplateIndex=0
 DocumentString=IDE Document
-IsActiveChildFrame=True
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAHBAAAAAAPPPPPPPPPDBAAAAAJLEAAAAACOCAAAAA
+IsActiveChildFrame=False
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAHBAAAAAAGAAAAAAAOAAAAAAAAMEAAAAABLBAAAAA
 
 [WorkState_v1_1.Frames.ChildFrames.Document-1]
 ptn_Child1=ViewFrame-0
@@ -513,7 +515,7 @@ DocPathName=include\src\ansi.c
 DocTemplateIndex=0
 DocumentString=IDE Document
 IsActiveChildFrame=False
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAHBAAAAAACIAAAAAACIAAAAAACFEAAAAAMFCAAAAA
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAHBAAAAAAMAAAAAAAEPPPPPPPMNDAAAAAOMBAAAAA
 
 [WorkState_v1_1.Frames.ChildFrames.Document-2]
 ptn_Child1=ViewFrame-0
@@ -523,7 +525,7 @@ DocPathName=include\src\initLevel.c
 DocTemplateIndex=0
 DocumentString=IDE Document
 IsActiveChildFrame=False
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPCEAAAAAACEAAAAAAOFEAAAAAJNBAAAAA
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAHBAAAAAACEAAAAAACEAAAAAAOFEAAAAAJNBAAAAA
 
 [WorkState_v1_1.Frames.ChildFrames.Document-3]
 ptn_Child1=ViewFrame-0
@@ -533,7 +535,7 @@ DocPathName=include\src\LED.c
 DocTemplateIndex=0
 DocumentString=IDE Document
 IsActiveChildFrame=False
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPIFAAAAAAIFAAAAAAEHEAAAAAPOBAAAAA
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAHBAAAAAAIFAAAAAAIFAAAAAAEHEAAAAAPOBAAAAA
 
 [WorkState_v1_1.Frames.ChildFrames.Document-4]
 ptn_Child1=ViewFrame-0
@@ -543,10 +545,30 @@ DocPathName=include\src\lut.c
 DocTemplateIndex=0
 DocumentString=IDE Document
 IsActiveChildFrame=False
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAHBAAAAAAOGAAAAAAOGAAAAAAKIEAAAAAFACAAAAA
+
+[WorkState_v1_1.Frames.ChildFrames.Document-5]
+ptn_Child1=ViewFrame-0
+
+[WorkState_v1_1.Frames.ChildFrames.Document-5.ViewFrame-0]
+DocPathName=include\src\Block.c
+DocTemplateIndex=0
+DocumentString=IDE Document
+IsActiveChildFrame=True
 WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPOGAAAAAAOGAAAAAAKIEAAAAAFACAAAAA
 
+[WorkState_v1_1.Frames.ChildFrames.Document-6]
+ptn_Child1=ViewFrame-0
+
+[WorkState_v1_1.Frames.ChildFrames.Document-6.ViewFrame-0]
+DocPathName=include\Block.h
+DocTemplateIndex=0
+DocumentString=IDE Document
+IsActiveChildFrame=False
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPEIAAAAAAEIAAAAAAAKEAAAAALBCAAAAA
+
 [WorkState_v1_1.Frames.MainFrame]
-Title=Ex2 -- ZDS II - Z8 Encore! Family -- main.c
+Title=Ex2 -- ZDS II - Z8 Encore! Family -- Block.c*
 WindowPlacement=MCAAAAAAAAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAGBAAAAAAAAAAAAAACBAAAAAAALEAAAAACKDAAAAA
 
 [WorkState_v1_1.ToolBarMgr]

@@ -15,19 +15,17 @@ void initBlocks(struct block b[NUM_BLOCKS], int x1, int y1, int x2, int num){
     b[num].xleft = x1;
     b[num].ytop = y1;
     b[num].xright = x2;
-
     }
 
-}
-
-void printBlocks(struct block b[NUM_BLOCKS], int x1, int y1, int color) {
+void printBlocks(int x1, int y1,int color) {
+    struct block b[NUM_BLOCKS];
 	int i, x = 32, num = 0, x_temp = x1;
 
 	while (num != NUM_BLOCKS) {
 		while (x1 < 160) {
 
 			int x2 = x1 + 5;
-            
+            reverse('o');
 			gotoxy(x1 + 1, y1);
 			for (i = x1 + 1; i < x2; i++) {
 				printf("%c", x);

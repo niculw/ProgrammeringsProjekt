@@ -9,7 +9,10 @@
 #include "LED.h"
 #include "StopWatch.h"
 #include "initLevel.h"
+#include "Block.h"
 #include "Striker.h"
+
+#define NUM_BLOCKS 50
 
 #define RESOLUTION_X 171
 #define RESOLUTION_Y 61
@@ -19,13 +22,10 @@
 #define FIX14_MULT(a, b) ( (a)*(b) >> FIX14_SHIFT )
 #define FIX14_DIV(a, b) ( ((a) << FIX14_SHIFT) / (b) )
 
-struct Block {
-	int xtop, yleft, xbottom, yright;
-};
-
 struct TVector {
 	long x,y;
 };
+
 
 long expand(long i) {
 	// converts an 18.14 to a 16.16
@@ -101,7 +101,7 @@ void main() {
 	drawBorder(2);
 	initStriker();
 	//drawStriker( 80 );
-	
+	printBlocks(4, 4, 0);
 
 	//EI();
 	//window(2, 2, 25, 7, "Hej You ", 0);

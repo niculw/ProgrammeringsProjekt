@@ -72,6 +72,7 @@ define __user_frequency = 20000000
  .\StopWatch.obj, \
  .\initLevel.obj, \
  .\Striker.obj, \
+ .\Block.obj, \
  C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\lib\std\crtrevaaLDD.lib, \
  C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\lib\std\fpdumyL.obj, \
  C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\lib\zilog\zslLYD.lib

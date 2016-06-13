@@ -58,6 +58,8 @@ clean:
             del Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\initLevel.obj
 	@if exist Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\Striker.obj  \
             del Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\Striker.obj
+	@if exist Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\Block.obj  \
+            del Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\Block.obj
 
 rebuildall: clean Debug
 
@@ -73,7 +75,8 @@ OBJS =  \
             Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\LED.obj  \
             Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\StopWatch.obj  \
             Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\initLevel.obj  \
-            Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\Striker.obj
+            Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\Striker.obj  \
+            Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\Block.obj
 
 Ex2: $(OBJS)
 	 $(LINK)  @Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\Ex2_Debug.linkcmd
@@ -97,6 +100,7 @@ Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\main.obj :  \
             C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\zilog\sio.h  \
             C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\zilog\uart.h  \
             C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\zilog\uartdefs.h  \
+            Z:\Users\NICO~VZA\PROG~VMQ\Arkanoid\include\Block.h  \
             Z:\Users\NICO~VZA\PROG~VMQ\Arkanoid\include\LED.h  \
             Z:\Users\NICO~VZA\PROG~VMQ\Arkanoid\include\StopWatch.h  \
             Z:\Users\NICO~VZA\PROG~VMQ\Arkanoid\include\Striker.h  \
@@ -164,4 +168,19 @@ Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\Striker.obj :  \
             Z:\Users\NICO~VZA\PROG~VMQ\Arkanoid\include\Striker.h  \
             Z:\Users\NICO~VZA\PROG~VMQ\Arkanoid\include\ansi.h
 	 $(CC)  $(CFLAGS) Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\include\src\Striker.c
+
+Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\Block.obj :  \
+            Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\include\src\Block.c  \
+            C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\std\format.h  \
+            C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\std\stdarg.h  \
+            C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\std\stdio.h  \
+            C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\zilog\defines.h  \
+            C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\zilog\dmadefs.h  \
+            C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\zilog\eZ8.h  \
+            C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\zilog\gpio.h  \
+            C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\zilog\sio.h  \
+            C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\zilog\uart.h  \
+            C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\zilog\uartdefs.h  \
+            Z:\Users\NICO~VZA\PROG~VMQ\Arkanoid\include\ansi.h
+	 $(CC)  $(CFLAGS) Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\include\src\Block.c
 

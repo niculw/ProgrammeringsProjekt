@@ -8,6 +8,7 @@
 
 #ifndef Block_h
 #define Block_h
+#define NUM_BLOCKS 50
 
 struct block {
     int xleft, ytop, xright;
@@ -15,7 +16,7 @@ struct block {
 
 void initBlocks(struct block b[NUM_BLOCKS], int x1, int y1, int x2, int num);
 
-void printBlocks(struct block b[NUM_BLOCKS], int x1, int y1, int color);
+void printBlocks(int x1, int y1, int color);
 
 
 #endif /* Block_h */
