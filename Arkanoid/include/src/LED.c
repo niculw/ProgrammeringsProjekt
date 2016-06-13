@@ -1,4 +1,6 @@
 #include <eZ8.h>             // special encore constants, macros and flash routines
+#include <sio.h>             // special encore serial i/o routines
+#include <stdio.h>
 #include "charset.h"
 
 int videoBuffer[5][6];

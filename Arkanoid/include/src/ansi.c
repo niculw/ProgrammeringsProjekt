@@ -1,5 +1,6 @@
-#include <eZ8.h>             // special encore constants, macros and flash routines
-#include <sio.h>             // special encore serial i/o routines
+//#include <eZ8.h>             // special encore constants, macros and flash routines
+//#include <sio.h>             // special encore serial i/o routines
+#include <stdio.h>
 #define ESC 0x1B
 
 void fgcolor(int foreground) {

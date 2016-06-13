@@ -1,5 +1,6 @@
 #include <eZ8.h>             // special encore constants, macros and flash routines
 #include <sio.h>             // special encore serial i/o routines
+#include <stdio.h>
 #include <string.h>
 
 #include "ansi.h"
@@ -17,6 +18,10 @@
 #define FIX14_SHIFT 2
 #define FIX14_MULT(a, b) ( (a)*(b) >> FIX14_SHIFT )
 #define FIX14_DIV(a, b) ( ((a) << FIX14_SHIFT) / (b) )
+
+struct Block {
+	int xtop, yleft, xbottom, yright;
+};
 
 struct TVector {
 	long x,y;
