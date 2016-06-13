@@ -9,7 +9,13 @@
 #ifndef Block_h
 #define Block_h
 
-printBlocks(struct block b[NUM_BLOCKS], int x1, int y1, int color);
+struct block {
+    int xleft, ytop, xright;
+};
+
+void initBlocks(struct block b[NUM_BLOCKS], int x1, int y1, int x2, int num);
+
+void printBlocks(struct block b[NUM_BLOCKS], int x1, int y1, int color);
 
 
 #endif /* Block_h */
