@@ -10,11 +10,11 @@ struct block {
 printBlocks(struct block b[NUM_BLOCKS], int x1, int y1, int color) {
 	int i, x = 196, y = 179, num = 0, x_temp = x1;
 
-	int a[6] = { 218, 192, 217, 191 };
+	int a[4] = { 218, 192, 217, 191 };
 
 	while (num != NUM_BLOCKS) {
 		int y2 = y1 + 1;
-		while (x1 != 160) {
+		while (x1 < 160) {
 
 			int x2 = x1 + 5;
 
@@ -42,11 +42,13 @@ printBlocks(struct block b[NUM_BLOCKS], int x1, int y1, int color) {
 			gotoxy(x2, y1);
 			printf("%c", a[3]);
 
+            b[num].xleft = x1;
+            b[num].ytop = y1;
+            b[num].xright = x2;
+            b[num].ybot = y2;
+            
 			x1 += 7;
-			b[num].xleft = x1;
-			b[num].ytop = y1;
-			b[num].xright = x2;
-			b[num].ybot = y2;
+			
 			num++;
 
 		}
