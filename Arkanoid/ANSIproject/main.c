@@ -2,6 +2,7 @@
 #include <sio.h>             // special encore serial i/o routines
 #include <string.h>
 
+#include "defines.h"
 #include "ansi.h"
 #include "lut.h"
 //#include "charset.h"		 // indkluderet i LED.c
@@ -9,10 +10,10 @@
 #include "StopWatch.h"
 #include "initLevel.h"
 #include "Striker.h"
-
-#define RESOLUTION_X 171
-#define RESOLUTION_Y 61
-#define STRIKER_WIDTH 15		// skal kunne deles med 5
+#include "angleCalc.h"
+#include "block.h"
+#include "ball.h"
+#include "collisionDetect.h"
 
 #define FIX14_SHIFT 2
 #define FIX14_MULT(a, b) ( (a)*(b) >> FIX14_SHIFT )
@@ -20,6 +21,11 @@
 
 struct TVector {
 	long x,y;
+};
+
+struct BallPos{
+    int x,y;
+	int xV, yV;
 };
 
 long expand(long i) {
@@ -76,49 +82,27 @@ void main() {
 	int k = 0, j = 0;
 	short strikerPosition = 80;		/// vi starter på midsten af skærmen
 	char oldkey = 0 , newkey;
-	char str[] = "ELEKTRO!!";
-//	struct TVector V1;
-//	struct TVector V2;
-//	struct TVector V3;
-//	struct time watch;
+//	char str[] = "ELEKTRO!!";
+	struct BallPos ball;
 	keysetup();						// sæt registre til knapperne
-//	initCounter();					// initialise counter for 100 hz refresh inteval.
 	init_uart(_UART0,_DEFFREQ,_DEFBAUD);
-	
-	printf("%c[?25l",0x1B);
+	printf("%c[?25l",0x1B);			// fjerner kurseren
 
 	color(1,0);
 	gotoxy(1,1);
 	clrscr();
-	
-	LEDinit();
+//	LEDinit();
 
 	drawBorder(2);
 	initStriker();
-	//drawStriker( 80 );
-	
+	initBall( &ball );
+//	printBlocks(&b, 2, 2, 4);
 
-	//EI();
-	//window(2, 2, 25, 7, "Hej You ", 0);
-//	window(5, 5, 40, 12, "Stop Watch  ", 1);
-	
-	//LEDsetString("123456789abcdefghijlk");
-
-//	inittime( &watch ,0 ,0 ,0 ,0, 0);
-
-/*	initVector( &V1 , 40 , 0 );
-	rotate( &V1 , 128 );
-	printf("After rotation: %d,%d\n", V1.x  >> 14 , V1.y >> 14);
-*/
 	do {
-//	LEDupdate();
-//	mellemled( str , strlen(str) );
-
 	newkey = readKey();
 	if( 0 != newkey ){											// hvis vi ahr trykket på en knap
 		if ( knapKonstant == 0 ) {								
 			knapKonstant = 500;
-			//oldkey = newkey;
 			if ( 1 == newkey && strikerPosition < RESOLUTION_X - STRIKER_WIDTH ){
 				strikerPosition++;
 			} else if ( 4 == newkey && strikerPosition > 2) {
@@ -131,25 +115,16 @@ void main() {
 	} else {
 		knapKonstant = 0;
 	}
-
-
-	//moveStriker();
-
-/*
-	if ( ( newkey != 0) && (oldkey != newkey) ){
-			k++;
-			gotoxy(3,3);
-			printf("%d", k );
-			oldkey = newkey;
-		} else if (newkey == 0) {
-			oldkey = 0;
+	
+	if (k == 10000){
+		drawBall( &ball );
+		gotoxy( 10, 59);
+		angleCalculation( &ball , collisionDetect( &ball, strikerPosition ) );
+		//printf("%d \n",collisionDetect( &ball, strikerPosition )  );
+		k = 0;
+	} else {
+		k++;
 	}
-*/
-//	calcTime( &watch );
-//	ledcontrol( k );
-//	printtime( &watch );
-	//T0CTL |= 0x81;			// enable timer // 1001 1001
-	//printf("Timeren er %d , d \n", T0H , T0L );
 	} while (1 != 2);
 }
 
