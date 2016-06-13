@@ -3,6 +3,9 @@
 
 #include "ansi.h"
 
+#define RESOLUTION_X 171
+#define RESOLUTION_Y 61
+
 void drawBorder( int style ){ 
 	int x, y;
 	int i;
@@ -29,16 +32,16 @@ void drawBorder( int style ){
 	for (i = 2; i < 61; i++){
 		gotoxy( 1, i);
 		printf("%c",y);
-		gotoxy( 171, i);
+		gotoxy( RESOLUTION_X, i);
 		printf("%c",y);
 	}
 	gotoxy( 2,1 );
-	for (i = 1 + 1; i < 171; i++){
+	for (i = 1 + 1; i < RESOLUTION_X; i++){
 		printf("%c",x);	
 	}
 	gotoxy(1, 1);
 	printf("%c", a[style][0]);
-	gotoxy(171, 1);
+	gotoxy(RESOLUTION_X, 1);
 	printf("%c", a[style][1]);
 }
 
