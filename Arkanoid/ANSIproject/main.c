@@ -10,6 +10,10 @@
 #include "initLevel.h"
 #include "Striker.h"
 
+#define RESOLUTION_X 171
+#define RESOLUTION_Y 61
+#define STRIKER_WIDTH 15		// skal kunne deles med 5
+
 #define FIX14_SHIFT 2
 #define FIX14_MULT(a, b) ( (a)*(b) >> FIX14_SHIFT )
 #define FIX14_DIV(a, b) ( ((a) << FIX14_SHIFT) / (b) )
@@ -115,7 +119,7 @@ void main() {
 		if ( knapKonstant == 0 ) {								
 			knapKonstant = 500;
 			//oldkey = newkey;
-			if ( 1 == newkey && strikerPosition < 156 ){
+			if ( 1 == newkey && strikerPosition < RESOLUTION_X - STRIKER_WIDTH ){
 				strikerPosition++;
 			} else if ( 4 == newkey && strikerPosition > 2) {
 				strikerPosition--;
