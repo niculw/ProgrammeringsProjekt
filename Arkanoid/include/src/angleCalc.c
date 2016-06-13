@@ -14,19 +14,19 @@ void angleCalculation( struct BallPos * ball , int collision ){
 			(*ball).yV = -(*ball).yV;
 			break;
 		case 3 :
-			
+			(*ball).yV = - (*ball).yV;
 			break;
 		case 4 :
-
+			(*ball).yV = - (*ball).yV;
 			break;
 		case 5 :
-			(*ball).y = - (*ball).y;
+			(*ball).yV = - (*ball).yV;
 			break;
 		case 6 :
-
+			(*ball).yV = - (*ball).yV;
 			break;
 		case 7 :
-
+			(*ball).yV = - (*ball).yV;
 			break;
 	}
 }
