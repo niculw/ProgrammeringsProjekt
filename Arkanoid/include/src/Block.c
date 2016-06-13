@@ -1,5 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
+//#include <stdio.h>
+//#include <stdlib.h>
+#include <eZ8.h>
+#include <sio.h>
 
 #define NUM_BLOCKS 50
 
