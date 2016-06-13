@@ -1,6 +1,6 @@
 #include <eZ8.h>             // special encore constants, macros and flash routines
 #include <sio.h>             // special encore serial i/o routines
-#include <stdio.h>
+
 #include <string.h>
 
 #include "ansi.h"
@@ -11,8 +11,6 @@
 #include "initLevel.h"
 #include "Block.h"
 #include "Striker.h"
-
-#define NUM_BLOCKS 50
 
 #define RESOLUTION_X 171
 #define RESOLUTION_Y 61
@@ -100,8 +98,8 @@ void main() {
 
 	drawBorder(2);
 	initStriker();
-	//drawStriker( 80 );
-	printBlocks(4, 4, 0);
+//	drawStriker( 80 );
+	printBlocks(6, 15); // printer alle blokke
 
 	//EI();
 	//window(2, 2, 25, 7, "Hej You ", 0);
