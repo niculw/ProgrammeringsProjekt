@@ -11,7 +11,7 @@
 #include "initLevel.h"
 #include "Striker.h"
 #include "angleCalc.h"
-#include "block.h"
+#include "Block.h"
 #include "ball.h"
 #include "collisionDetect.h"
 
@@ -92,16 +92,15 @@ void main() {
 	color(1,0);
 	gotoxy(1,1);
 	clrscr();
-//	LEDinit();
 
 	drawBorder(2);
 	initStriker();
 	initBall( &ball );
-//	printBlocks(&b, 2, 2, 4);
+	printBlocks(6, 15); 
 
 	do {
 	newkey = readKey();
-	if( 0 != newkey ){											// hvis vi ahr trykket på en knap
+	if( 0 != newkey ){											// hvis vi har trykket på en knap
 		if ( knapKonstant == 0 ) {								
 			knapKonstant = 500;
 			if ( 1 == newkey && strikerPosition < RESOLUTION_X - STRIKER_WIDTH ){

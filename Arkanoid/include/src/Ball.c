@@ -4,8 +4,8 @@
 //#include "Ball.h"
 
 struct BallPos{
-    int x,y;
-	int xV, yV;
+    long x,y;
+	long xV, yV;
 };
 
 void initBall( struct BallPos * ball ){
