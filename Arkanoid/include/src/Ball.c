@@ -1,12 +1,7 @@
 #include <eZ8.h>             // special encore constants, macros and flash routines
 #include <sio.h>             // special encore serial i/o routines
 #include "ansi.h"
-//#include "Ball.h"
-
-struct BallPos{
-    int x,y;
-	int xV, yV;
-};
+#include "Ball.h"
 
 void initBall( struct BallPos * ball ){
 	(*ball).x = 80; // initates the ball at x-coordinate
