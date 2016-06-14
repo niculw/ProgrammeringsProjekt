@@ -6,7 +6,7 @@
 
 void initStriker(){
 	int i;
-	color(4,0);
+	color(2,0);
 	for ( i = 0; i < STRIKER_WIDTH ; i++){
 		gotoxy( 80 + i, RESOLUTION_Y - 1);
 		printf("%c", 178);					//// draw new stiker
@@ -14,8 +14,8 @@ void initStriker(){
 }
 
 void drawStriker( int position ){
-	static int oldStrikerPos = 0;
-	color(4,0);
+	static int oldStrikerPos = 80;
+	color(2,0);
 	//int i;
 	if ( oldStrikerPos < position) {		//// kører vi til højre
 	//	gotoxy(oldStrikerPos, 60);
@@ -23,7 +23,7 @@ void drawStriker( int position ){
 		printf("%c",32);					//// remove old stiker
 		gotoxy(position + STRIKER_WIDTH - 1 , RESOLUTION_Y - 1);
 		printf("%c", 178);					//// draw new stiker
-	} else if ( oldStrikerPos > position ) {								//// ellers kører vi til venstre
+	} else if ( oldStrikerPos > position ) {		//// ellers kører vi til venstre
 	//	gotoxy(oldStrikerPos + 14, 60);
 		gotoxy(position + 15 , RESOLUTION_Y - 1);
 		printf("%c",32);					//// remove old stiker

@@ -1,7 +1,6 @@
 #include <eZ8.h>             // special encore constants, macros and flash routines
 #include <sio.h>             // special encore serial i/o routines
 #include <string.h>
-
 #include "defines.h"
 #include "ansi.h"
 #include "lut.h"
@@ -63,9 +62,16 @@ void main() {
 		if ( knapKonstant == 0 ) {								
 			knapKonstant = 500;
 			if ( 1 == newkey && strikerPosition < RESOLUTION_X - STRIKER_WIDTH ){
+			///// right key pressed
 				strikerPosition++;
 			} else if ( 4 == newkey && strikerPosition > 2) {
+			///// left key pressed
 				strikerPosition--;
+			} else if (2 == newkey){
+				ball.ballStarted = 1;
+			}
+			if ( ball.ballStarted == 0){
+				drawBall( &ball , strikerPosition);
 			}
 			drawStriker( strikerPosition );
 		} else {
@@ -75,11 +81,11 @@ void main() {
 		knapKonstant = 0;
 	}
 	
-	if (k == 10000){
-		drawBall( &ball );
-		gotoxy( 10, 59);
+	if (k == 5000){
+		drawBall( &ball , strikerPosition);
 		angleCalculation( &ball , collisionDetect( &ball, strikerPosition ) );
-		//printf("%d \n",collisionDetect( &ball, strikerPosition )  );
+		gotoxy( 10, 57);
+	//	printf("Collision: %d \n",collisionDetect( &ball, strikerPosition )  );
 		k = 0;
 	} else {
 		k++;

@@ -5,8 +5,8 @@
 #include "defines.h"
 
 struct BallPos{
-    int x,y;
-	int xV, yV;
+    long x,y;
+	long xV, yV;
 };
 
 long expand(long i) {
@@ -40,26 +40,37 @@ void rotate(struct TVector * v, int a ){
 
 void angleCalculation( struct BallPos * ball , int collision ){
 	switch (collision) {
-		case 1 :								/// top hit
+		case 0 :								/// no collision
+			break;
+		case 1 :								/// window sides hit
 			(*ball).xV = -(*ball).xV;
 			break;
-		case 2 :								/// sides hit
+		case 2 :								/// window top hit
 			(*ball).yV = -(*ball).yV;
 			break;
 		case 3 :								/// left striker hit
+		´//	(*ball).xV = (*ball).xV ;
 			(*ball).yV = - (*ball).yV;
+
+
 			break;
 		case 4 :								/// left middle striker hit
 			(*ball).yV = - (*ball).yV;
+			
+
 			break;
 		case 5 :								/// middle striker hit
 			(*ball).yV = - (*ball).yV;
 			break;
 		case 6 :								/// right middle striker hit
 			(*ball).yV = - (*ball).yV;
+
+
 			break;
 		case 7 :								/// right striker hit
 			(*ball).yV = - (*ball).yV;
+
+
 			break;
 	}
 }
