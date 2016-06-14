@@ -13,7 +13,7 @@ void initLife(struct lives * L){
 (*L).Lives = 3;
 }
 
-void lifeChanger(struct lives * L ){
+void lifeChanger(struct lives * L , int collisionDetect, int Extra){
 	if (collisionDetect == -1){
 		(*L).Lives--;
 		}
@@ -27,5 +27,8 @@ void lifeChanger(struct lives * L ){
 		printf("you lose");	   
 
 	}
+	gotoxy(200, 60);
+	printf("%d", (*L).Lives);
+
 }
 
