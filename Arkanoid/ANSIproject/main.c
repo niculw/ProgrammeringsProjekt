@@ -1,6 +1,6 @@
 #include <eZ8.h>             // special encore constants, macros and flash routines
 #include <sio.h>             // special encore serial i/o routines
-#include <stdio.h>
+
 #include <string.h>
 
 #include "ansi.h"
@@ -11,8 +11,6 @@
 #include "initLevel.h"
 #include "Block.h"
 #include "Striker.h"
-
-#define NUM_BLOCKS 50
 
 #define RESOLUTION_X 171
 #define RESOLUTION_Y 61
@@ -26,12 +24,45 @@ struct TVector {
 	long x,y;
 };
 
-
 long expand(long i) {
 	// converts an 18.14 to a 16.16
 	return i << 2;
 }
 
+/*void printBlocks(struct block *b, int x1, int y1) {
+	int farve = 0, n = 7;
+    
+	int i, x = 32, num = 0, x_temp = x1;
+
+	while (num < NUM_BLOCKS) {
+		while (x1 < 160 && num < NUM_BLOCKS) {
+			int x2 = x1 + n; 
+			b[num].xleft = x1;
+  	 		b[num].ytop = y1;
+   			b[num].xright = x2;
+			if(farve < 6){
+			farve++; 
+			} else if( farve == 6) {
+			farve = 1;
+			}
+		    fgcolor(farve);
+            reverse('o');
+			gotoxy(x1 + 1, y1);
+			for (i = x1; i <= x2; i++) {
+				printf("%c", x);
+			}
+          	//initBlocks(b, x1, y1, x2, num);		   // gemmer koordinat i array
+		
+			x1 += n;
+			num++;
+			
+		} 
+		y1 += 2;
+		x1 = x_temp;
+	}
+	reverse('p');
+	printf("x1, y1, x2 = %d, %d, %d", b[num].xleft, b[20].ytop, b[20].xright);			    // test print af vilkårlig bloks koordinat
+}*/
 void printFix(long i) {
 	// prints a signed 16.16 fixed point number
 	if ((i & 0x80000000) != 0) { // handle negative numbers
@@ -82,13 +113,14 @@ void main() {
 	short strikerPosition = 80;		/// vi starter på midsten af skærmen
 	char oldkey = 0 , newkey;
 	char str[] = "ELEKTRO!!";
+	struct block b[NUM_BLOCKS];
 //	struct TVector V1;
 //	struct TVector V2;
 //	struct TVector V3;
 //	struct time watch;
-	keysetup();						// sæt registre til knapperne
+//	keysetup();						// sæt registre til knapperne
 //	initCounter();					// initialise counter for 100 hz refresh inteval.
-	init_uart(_UART0,_DEFFREQ,_DEFBAUD);
+//	init_uart(_UART0,_DEFFREQ,_DEFBAUD);
 	
 	printf("%c[?25l",0x1B);
 
@@ -96,12 +128,16 @@ void main() {
 	gotoxy(1,1);
 	clrscr();
 	
-	LEDinit();
+//	LEDinit();
 
-	drawBorder(2);
-	initStriker();
-	//drawStriker( 80 );
-	printBlocks(4, 4, 0);
+//	drawBorder(2);
+//	initStriker();
+//	drawStriker( 80 );
+	initBlocks(b, 6, 15); // printer alle blokke
+	for(i = 0; i < NUM_BLOCKS; i++){
+		printf("\n x1, y1, x2 = %d, %d, %d", b[i].xleft, b[i].ytop, b[i].xright);	
+	}
+//	printf("x1, y1, x2 = %d, %d, %d", b[20].xleft, b[20].ytop, b[20].xright);
 
 	//EI();
 	//window(2, 2, 25, 7, "Hej You ", 0);
@@ -119,7 +155,7 @@ void main() {
 //	LEDupdate();
 //	mellemled( str , strlen(str) );
 
-	newkey = readKey();
+/*	newkey = readKey();
 	if( 0 != newkey ){											// hvis vi ahr trykket på en knap
 		if ( knapKonstant == 0 ) {								
 			knapKonstant = 500;
@@ -136,7 +172,7 @@ void main() {
 	} else {
 		knapKonstant = 0;
 	}
-
+*/
 
 	//moveStriker();
 

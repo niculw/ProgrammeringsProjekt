@@ -3,39 +3,37 @@
 #include <eZ8.h>
 #include <sio.h>
 #include "ansi.h"
+#include "Block.h"
 
-#define NUM_BLOCKS 50
-
-struct block {
-	int xleft, ytop, xright;
-};
-
-
-void initBlocks(struct block b[NUM_BLOCKS], int x1, int y1, int x2, int num){
-    b[num].xleft = x1;
-    b[num].ytop = y1;
-    b[num].xright = x2;
-    }
-
-void printBlocks(int x1, int y1,int color) {
-    struct block b[NUM_BLOCKS];
+void initBlocks(struct block *b, int x1, int y1) {
+	int farve = 0, n = 7;
+    
 	int i, x = 32, num = 0, x_temp = x1;
 
-	while (num != NUM_BLOCKS) {
-		while (x1 < 160) {
-
-			int x2 = x1 + 5;
+	while (num < NUM_BLOCKS) {
+		while (x1 < 160 && num < NUM_BLOCKS) {
+			int x2 = x1 + n; 
+			b[num].xleft = x1;
+  	 		b[num].ytop = y1;
+   			b[num].xright = x2;
+			if(farve < 6){
+			farve++; 
+			} else if( farve == 6) {
+			farve = 1;
+			}
+		    fgcolor(farve);
             reverse('o');
 			gotoxy(x1 + 1, y1);
-			for (i = x1 + 1; i < x2; i++) {
+			for (i = x1; i <= x2; i++) {
 				printf("%c", x);
 			}
-            initBlocks(b, x1, y1, x2, num);
-			x1 += 7;
+		
+			x1 += n;
 			num++;
-
-		}
+			
+		} 
 		y1 += 2;
 		x1 = x_temp;
 	}
+	reverse('p');
 }
