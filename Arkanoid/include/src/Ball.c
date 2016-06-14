@@ -11,8 +11,8 @@ struct BallPos{
 void initBall( struct BallPos * ball ){
 	(*ball).x = 80; // initates the ball at x-coordinate
 	(*ball).y = 40; // initates the ball at y-coordinate
-	(*ball).xV = 1;  //No change in x-coordinate until striker is hit
-	(*ball).yV = 0; //Ball starts out by dropping
+	(*ball).xV = 0;  //No change in x-coordinate until striker is hit
+	(*ball).yV = -1; //Ball starts out by dropping
 	gotoxy( (*ball).x, (*ball).y);
 	printf("%c", 111);
 }

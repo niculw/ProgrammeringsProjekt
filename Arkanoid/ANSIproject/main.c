@@ -15,7 +15,7 @@
 #include "ball.h"
 #include "collisionDetect.h"
 
-#define FIX14_SHIFT 2
+#define FIX14_SHIFT 14
 #define FIX14_MULT(a, b) ( (a)*(b) >> FIX14_SHIFT )
 #define FIX14_DIV(a, b) ( ((a) << FIX14_SHIFT) / (b) )
 
@@ -44,9 +44,10 @@ void printFix(long i) {
 }
 
 void initVector(struct TVector * v, long x, long y){
-	(*v).x = expand( x );
-	(*v).y = expand( y );
-	printf("New Vector: %ld,%ld (%d,%d)\n", (*v).x, (*v).y, (*v).x >> 2 , (*v).y >> 2);
+	(*v).x = x << 14;
+	(*v).y = y << 14;
+	printf("input: %ld,%ld\n", x, y );
+	printf("stored: (%ld,%ld)\n",(*v).x ,(*v).y);
 }
 
 void rotate(struct TVector * v, int a ){
