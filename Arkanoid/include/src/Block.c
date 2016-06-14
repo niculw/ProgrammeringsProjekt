@@ -81,3 +81,5 @@ void printBlocks(struct block *b, int x1, int y1, int n) {
 void initBlocks(struct block *b, int x1, int y1, int level, int length){
 	printBlocks(b, x1, y1, length);
 }
+
+// initBlocks(b, 6, 15, 0, 7); // printer alle blokke
