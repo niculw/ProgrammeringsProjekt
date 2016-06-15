@@ -7,7 +7,8 @@ struct BallPos{
 	short ballStarted;
 };
 
-void initBall();
-void drawBall(struct BallPos * ball, short strikerPosition);
+void initBall( struct BallPos * ball, short strikerPosition );
+void despawn( struct BallPos * ball, short strikerPosition );
+void drawBall( struct BallPos * ball, short strikerPosition );
 
 #endif

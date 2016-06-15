@@ -2,10 +2,12 @@
 #define _Life_H_
 
 struct lives{
-    int Life;
+    short Lives;
 };
 
-void initLife();
-void lifeChanger(struct lives * L);
+void initLife( struct lives * L );
+void printLife( struct lives * life );
+void addLife( struct lives * life );
+void lifeChanger( struct lives * L );
 
 #endif

@@ -16,6 +16,7 @@
 #include "game.h"
 #include "io.h"
 #include "menu.h"
+//#include "life.h"
 
 void main() {
 	int i = 0, j = 0, menuPunkt = 1, knapKonstant = 0;
@@ -32,9 +33,6 @@ void main() {
 //	printBlocks(&b, 2, 2, 4);
 
 	do {
-		
-	//	printf("while main");
-
 		newkey = readKey();
 		if( 0 != newkey ){											// hvis vi ahr trykket på en knap
 			if ( knapKonstant == 0 ) {								
@@ -71,13 +69,6 @@ void main() {
 			} 
 		} else {
 			knapKonstant = 100;
-		}
-
-
-		if (1 == 2){
-		
-		} else if (1 == 2){
-			game();
 		}
 	} while (1 != 2);
 }
