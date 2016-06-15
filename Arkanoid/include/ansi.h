@@ -8,6 +8,11 @@ void resetbgcolor();
 void clrscr();
 void clreol();
 void gotoxy(int x, int y);
+
+void goDown( short c );
+void goUp( short c );
+void goRight( short c );
+void goLeft( short c );
 void underline(char on);
 void blink(char on);
 void reverse(char on);
