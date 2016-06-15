@@ -13,83 +13,72 @@
 #include "block.h"
 #include "ball.h"
 #include "collisionDetect.h"
-
-char readKey(){
-	char F , D , A;
-	F = PFIN;
-	D = PDIN;
-	A = ( F >> 5 & 0x02) | (F >> 7 & 0x01 ) | ( D >> 1 & 0x04);
-	return (~A & 0x07);
-}
-
-void keysetup(){
-	PFDD |= 0xC0; 
-	PDDD |= 0x08; 
-}
-
-void ledcontrol( int number ){
-	PEDD = 0x0F;     // 1 for input 0 for output
-	PGDD = 0x00;
-	PGOUT = number;
-	PEOUT |= 0x40;
-	PEOUT &= 0xBF;
-}
+#include "game.h"
+#include "io.h"
+#include "menu.h"
 
 void main() {
-	int i, knapKonstant = 0;
-	int k = 0, j = 0;
-	short strikerPosition = 80;		/// vi starter på midsten af skærmen
+	int i = 0, j = 0, menuPunkt = 1, knapKonstant = 0;
+	char status;
 	char oldkey = 0 , newkey;
-//	char str[] = "ELEKTRO!!";
-	struct BallPos ball;
 	keysetup();						// sæt registre til knapperne
 	init_uart(_UART0,_DEFFREQ,_DEFBAUD);
 	printf("%c[?25l",0x1B);			// fjerner kurseren
-
-	color(1,0);
-	gotoxy(1,1);
 	clrscr();
+	initMenu();
+//	color(1,0);
 //	LEDinit();
 
-	drawBorder(2);
-	initStriker();
-	initBall( &ball );
 //	printBlocks(&b, 2, 2, 4);
 
 	do {
-	newkey = readKey();
-	if( 0 != newkey ){											// hvis vi ahr trykket på en knap
-		if ( knapKonstant == 0 ) {								
-			knapKonstant = 500;
-			if ( 1 == newkey && strikerPosition < RESOLUTION_X - STRIKER_WIDTH ){
-			///// right key pressed
-				strikerPosition++;
-			} else if ( 4 == newkey && strikerPosition > 2) {
-			///// left key pressed
-				strikerPosition--;
-			} else if (2 == newkey){
-				ball.ballStarted = 1;
-			}
-			if ( ball.ballStarted == 0){
-				drawBall( &ball , strikerPosition);
-			}
-			drawStriker( strikerPosition );
+		
+	//	printf("while main");
+
+		newkey = readKey();
+		if( 0 != newkey ){											// hvis vi ahr trykket på en knap
+			if ( knapKonstant == 0 ) {								
+				knapKonstant = 50000;
+				if ( 1 == newkey ){
+					if (menuPunkt > 1){
+						menuPunkt--;
+					} else {
+						menuPunkt = 3;
+					}
+					menuSel(menuPunkt);		////////////// kan denne måske placeres uden for if sætningen?
+				} else if ( 2 == newkey ) {
+					switch ( menuPunkt ) {
+						 case 1 :
+							game();
+							 break;
+						 case 2 :
+							//// menuPunkt 2 goes here
+						 	break;
+						 case 3 : 
+							//// menuPunkt 3 goes here
+						 	break;
+					}
+				} else if ( 4 == newkey ) {
+					if (menuPunkt < 3){
+						menuPunkt++;
+					} else {
+						menuPunkt = 1;
+					}
+					menuSel(menuPunkt);		 ////////////// kan denne måske placeres uden for if sætningen?
+				}
+			} else {
+				knapKonstant--;
+			} 
 		} else {
-			knapKonstant--;
-		} 
-	} else {
-		knapKonstant = 0;
-	}
-	
-	if (k == 5000){
-		drawBall( &ball , strikerPosition);
-		angleCalculation( &ball , collisionDetect( &ball, strikerPosition ) );
-		gotoxy( 10, 57);
-	//	printf("Collision: %d \n",collisionDetect( &ball, strikerPosition )  );
-		k = 0;
-	} else {
-		k++;
-	}
+			knapKonstant = 100;
+		}
+
+
+		if (1 == 2){
+		
+		} else if (1 == 2){
+			game();
+		}
 	} while (1 != 2);
 }
 

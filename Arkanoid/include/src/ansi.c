@@ -72,6 +72,22 @@ void gotoxy(int x, int y) {
 	printf("%c[%d;%dH", ESC, y, x);
 }
 
+void goDown( short c ) {
+	printf("%c[%dB", ESC ,c);
+}
+
+void goUp( short c ) {
+	printf("%c[%dA", ESC ,c);
+}
+
+void goRight( short c ) {
+	printf("%c[%dC", ESC ,c);
+}
+
+void goLeft( short c ) {
+	printf("%c[%dD", ESC ,c);
+}
+
 void underline(char on){
 	int x;
 	if (on == 'o'){
