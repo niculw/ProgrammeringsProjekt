@@ -8,13 +8,13 @@ void initStriker(){
 	int i;
 	color(2,0);
 	for ( i = 0; i < STRIKER_WIDTH ; i++){
-		gotoxy( 80 + i, RESOLUTION_Y - 1);
+		gotoxy( STRIKER_START_POSITION + i, RESOLUTION_Y - 1);
 		printf("%c", 178);					//// draw new stiker
 	}
 }
 
 void drawStriker( int position ){
-	static int oldStrikerPos = 80;
+	static int oldStrikerPos = STRIKER_START_POSITION;
 	color(2,0);
 	//int i;
 	if ( oldStrikerPos < position) {		//// kører vi til højre
