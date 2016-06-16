@@ -24,7 +24,7 @@ int collisionDetect( struct BallPos * ball, short strikerPos , struct lives * li
 					&& (*ball).x >> 14 <= strikerPos + 5 * ( STRIKER_WIDTH / 5 ) - 1 ) {
 			return 7;										// hit right
 		} else {											// didnt hit striker (dead)
-			lifeChanger( life );
+			removeLife( life );
 			despawn( ball );
 			initBall( ball );
 			return -1;										// striker not hit

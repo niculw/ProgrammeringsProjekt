@@ -17,6 +17,7 @@
 #include "io.h"
 #include "menu.h"
 //#include "life.h"
+#include "help.h"
 
 int halfMilisec = 0;
 
@@ -39,12 +40,11 @@ void initTimer0() {
 	T0CTL = 0x81;			// 1000 0001 // enable and continious mode
 	//////////////////////////////////////////////////// 
 	EI();					// enable interupts
-	//T0CTL |= 0x99;		// enable timer // 1001 1001
 }
 
 
 void main() {
-	int i = 0, j = 0, menuPunkt = 1; //, knapKonstant = 0;
+	char i = 0, j = 0, menuPunkt = 1, menuSelector = 0;
 	char status;
 	char oldkey = 0 , newkey;
 	keysetup();						// sæt registre til knapperne
@@ -53,6 +53,7 @@ void main() {
 	printf("%c[?25l",0x1B);			// fjerner kurseren
 	clrscr();
 	initMenu();
+	reverse('p');					// sikrer at reverse er slået fra ved opstart
 
 //	color(1,0);
 //	LEDinit();
@@ -70,18 +71,62 @@ void main() {
 					} else {
 						menuPunkt = 3;
 					}
-					menuSel(menuPunkt);		////////////// kan denne måske placeres uden for if sætningen?
+					if (menuSelector < 3){
+						menuSel(menuPunkt);		////////////// kan denne måske placeres uden for if sætningen?
+					}
 				} else if ( 2 == newkey ) {
-					switch ( menuPunkt ) {
-						 case 1 :
-							game();
-							break;
-						 case 2 :
-							//// menuPunkt 2 goes here
-						 	break;
-						 case 3 : 
-							//// menuPunkt 3 goes here
-						 	break;
+					if (menuSelector < 2) {
+						switch ( menuPunkt ) {
+							 case 1 :
+							 	if ( 0 == menuSelector ) {					// vi er i hovedmenuen
+									game();
+								} else if ( 2 == menuSelector) {			// vi er i Highscore menuen
+									
+								} else if ( 1 == menuSelector) {			// vi er i help menuen
+									clrscr();
+									printHelp( 1 );					// print control help
+									menuSelector = 3;
+								}
+								break;
+							 case 2 :		
+							 	if ( 0 == menuSelector ) {					// vi er i hovedmenuen
+								//	clrscr();
+								//	menuSelector = 2;
+									// gå til highscore
+								} else if ( 2 == menuSelector) {			// vi er i Highscore menuen
+									
+								} else if ( 1 == menuSelector) {			// vi er i help menuen
+									clrscr();
+									printHelp( 2 );					// print power up help
+									menuSelector = 4;
+								} else {
+									clrscr();
+									menuSelector = 1;
+								}
+							 	break;
+							 case 3 : 		
+							 	if ( 0 == menuSelector ) {					// vi er i hovedmenuen
+									clrscr();
+									menuSelector = 1;
+									menuPunkt = 1;
+									initHelp();
+									// gå til help menu
+								} else if ( 2 == menuSelector) {			// vi er i Highscore menuen
+									
+								} else if ( 1 == menuSelector) {			// vi er i help menuen
+									clrscr();
+									initMenu();
+									menuSelector = 0;
+								}
+							 	break; 
+						}
+					} else if ( menuSelector == 2 ){
+					//	clrscr();
+					} else {
+						clrscr();
+						initHelp();
+						menuPunkt = 1;
+						menuSelector = 1;
 					}
 				} else if ( 4 == newkey ) {
 					if (menuPunkt < 3){
@@ -89,7 +134,9 @@ void main() {
 					} else {
 						menuPunkt = 1;
 					}
-					menuSel(menuPunkt);		 ////////////// kan denne måske placeres uden for if sætningen?
+					if (menuSelector < 2){
+						menuSel(menuPunkt);		 ////////////// kan denne måske placeres uden for if sætningen?
+					}
 				}
 			}
 		} 

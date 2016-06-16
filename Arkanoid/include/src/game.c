@@ -25,8 +25,8 @@ void game() {
 	initStriker();
 	initBall( &ball );
 	initLife( &life );
-	initLevel( blocks , level);
-	initLevels(b, level);
+//	initLevel( blocks , level);
+//	initLevels(b, level);
 	do {
 		if ( halfMilisec >= 64 ) {
 			newkey = readKey();

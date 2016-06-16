@@ -10,7 +10,9 @@ void timer0int() {
 	milisec += 10;
 }
 */
+
 void calcTime( struct time * t ){
+/*
 	if (milisec < 990 ) {
 		(*t).milisec = milisec;
 	} else {
@@ -27,18 +29,23 @@ void calcTime( struct time * t ){
 				(*t).hour++;
 			}
 		}
-	}
+	}*/
 }
 
+
 void inittime( struct time * t, int h, int m, int s, int ms, int oldsec){
+/*
 	(*t).hour = h;
 	(*t).min = m;
 	(*t).sec = s;
 	(*t).milisec = ms;
 	(*t).oldsec = oldsec;
+	*/
 }
 
+
 void keyFunc( char keys, struct time * tid){
+/*
 static int startstop = 0;
 	switch (keys){
 		case 0x01 : 
@@ -74,8 +81,9 @@ static int startstop = 0;
 			gotoxy(25 ,8);
 			printf("-:--:--:--");
 			break;
-	}
+	}*/
 }
+
 
 void initCounter(){		
 /*
@@ -97,11 +105,12 @@ void initCounter(){
 }
 
 void printtime( struct time * t ){
-	if ( (*t).oldsec != (*t).sec){
+/*	if ( (*t).oldsec != (*t).sec){
 		gotoxy( 8 , 6 );
 		printf("Time is:         %d:%02d:%02d,--\n",(*t).hour,(*t).min,(*t).sec);
 		(*t).oldsec = (*t).sec;
 	}
+	*/
 }
 
 	/*
@@ -111,4 +120,5 @@ void printtime( struct time * t ){
 		keyFunc(newkey, &watch);
 	}
 	*/
+
 

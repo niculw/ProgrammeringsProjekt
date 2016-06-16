@@ -9,7 +9,7 @@ struct time {
 	int oldsec;
 };
 
-void timer0int();
+//void timer0int();
 void calcTime( struct time * t );
 void inittime( struct time * t, int h, int m, int s, int ms, int oldsec);
 void keyFunc( char keys, struct time * tid);

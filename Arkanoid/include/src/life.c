@@ -8,11 +8,21 @@
 
 #define GAMEOVER_X 25
 
-void initLife( struct lives * L ){
-	int i;
-	color(1,0);
-	(*L).Lives = 3;
-	for ( i = 0; i < 3 ; i++){
+void initLife( struct lives * life ){
+	(*life).Lives = 3;
+	printLife( life );
+}
+
+void printLife( struct lives * life ) {
+	static short oldlife = 3;				// vi starter på 3 liv
+	char i;
+	
+	if ( 4 <= (*life).Lives ){
+		color(5,0);
+	} else {
+		color(1,0);
+	}
+	for ( i = 0; i < (*life).Lives ; i++){
 		gotoxy( RESOLUTION_X + 3, 4 + i * 5 );
 		printf(" #   # ");
 		gotoxy( RESOLUTION_X + 3, 4 + i * 5 + 1 );
@@ -26,22 +36,28 @@ void initLife( struct lives * L ){
 	}
 }
 
-void printLife( struct lives * life ) {
-	static short oldlife = 3;				// vi starter på 3 liv
-	
-	//	(*L).Lives ;
-}
-
 void addLife( struct lives * life  ) {
 	if ( 5 > (*life).Lives ) {
 		(*life).Lives++;
+		printLife( life );
 	}
 }
 
-void lifeChanger( struct lives * L ){
+void removeLife( struct lives * life ){
 	color(11,0);
-	(*L).Lives--;
-	if ((*L).Lives <= 0){
+	(*life).Lives--;
+	gotoxy( RESOLUTION_X + 3, 4 + (*life).Lives * 5 );
+	printf("       ");
+	gotoxy( RESOLUTION_X + 3, 4 + (*life).Lives * 5 + 1 );
+	printf("       ");
+	gotoxy( RESOLUTION_X + 3, 4 + (*life).Lives * 5 + 2 );
+	printf("       ");
+	gotoxy( RESOLUTION_X + 3, 4 + (*life).Lives * 5 + 3 );
+	printf("       ");
+	gotoxy( RESOLUTION_X + 3, 4 + (*life).Lives * 5 + 4 );
+	printf("       ");
+
+	if ((*life).Lives <= 0){
 		gotoxy(GAMEOVER_X,10);
 		printf("###############################################################################################################################");
 		gotoxy(GAMEOVER_X,11);
@@ -66,5 +82,5 @@ void lifeChanger( struct lives * L ){
 		printf("###############################################################################################################################");
 	}
 	gotoxy(10, 62);
-	printf("%d", (*L).Lives);
+	printf("%d", (*life).Lives);
 }
