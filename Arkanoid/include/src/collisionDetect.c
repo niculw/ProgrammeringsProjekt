@@ -3,7 +3,7 @@
 #include "life.h"
 #include "ball.h"
 
-int collisionDetect( struct BallPos * ball, short strikerPos , struct lives * life){
+int collisionDetect( struct BallPos * ball, short strikerPos , struct lives * life, struct block * b ){
 	if ( (*ball).x >> 14 <= 2 || (*ball).x >> 14 >= RESOLUTION_X - 1 ){	// window sides hit
 		return 1;
 	} else if ( (*ball).y >> 14 <= 2) {							// window top hit
