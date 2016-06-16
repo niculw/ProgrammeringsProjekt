@@ -1,4 +1,4 @@
-/* Linker Command File - Ex2 Debug */
+/* Linker Command File - Arkanoid Debug */
 
 /* compiler options */
 /* -alias -asm -bitfieldsize:32 -charsize:8 -const:RAM -debug */
@@ -12,7 +12,7 @@
 /* -quiet -regvar -revaa -NOsdiopt -shortsize:16 */
 /* -stdinc:"C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\std;C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\zilog;C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\zilog\Z8Encore_F640X" */
 /* -strict */
-/* -usrinc:"M:\Documents\30010_Programerings_Projekt\PArkanoid\include;M:\Documents\30010_Programerings_Projekt\Project;M:\Documents\30010_Programerings_Projekt\Project\include;C:\Users\S143217\Desktop\Project\include;C:\Users\S143217\Desktop\Arkanoid\include;Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\include" */
+/* -usrinc:"Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\include" */
 /* -NOwatch -cpu:Z8F6403 */
 /* -asmsw:" -cpu:Z8F6403 -define:_Z8F6403=1 -define:_Z8ENCORE_640_FAMILY=1 -define:_Z8ENCORE_F640X=1 -define:_MODEL_LARGE=1 -define:_SIMULATE=1 -include:C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\std;C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\zilog;C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\include\zilog\Z8Encore_F640X -revaa" */
 
@@ -62,17 +62,17 @@ define _zsl_g_clock_xdefine = 5529600
 /* Set frequency to 20000000 MHz */
 define __user_frequency = 20000000
 
-"Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\Ex2"= \
+"Z:\Users\NicolaiWeis\ProgrammeringsProjekt\Arkanoid\Arkanoid"= \
  C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\lib\zilog\startupL.obj, \
  .\zsldevinit.obj, \
- .\main.obj, \
  .\ansi.obj, \
- .\lut.obj, \
- .\LED.obj, \
- .\StopWatch.obj, \
- .\initLevel.obj, \
- .\Striker.obj, \
  .\Block.obj, \
+ .\initLevel.obj, \
+ .\LED.obj, \
+ .\lut.obj, \
+ .\StopWatch.obj, \
+ .\Striker.obj, \
+ .\main.obj, \
  C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\lib\std\crtrevaaLDD.lib, \
  C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\lib\std\fpdumyL.obj, \
  C:\PROG~FBU\ZiLOG\ZDSI~VVT.3\lib\zilog\zslLYD.lib

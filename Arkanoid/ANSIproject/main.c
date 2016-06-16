@@ -130,13 +130,14 @@ void main() {
 	
 //	LEDinit();
 
-//	drawBorder(2);
+	drawBorder(2);
 //	initStriker();
 //	drawStriker( 80 );
-	initBlocks(b, 6, 15); // printer alle blokke
-	for(i = 0; i < NUM_BLOCKS; i++){
-		printf("\n x1, y1, x2 = %d, %d, %d", b[i].xleft, b[i].ytop, b[i].xright);	
-	}
+	initLevels(b, 3);
+	
+	//for(i = 0; i < ; i++){
+	//	printf("\n x1, y1, x2, life = %d, %d, %d, %d", b[i].xleft, b[i].ytop, b[i].xright, b[i].life);	
+	
 //	printf("x1, y1, x2 = %d, %d, %d", b[20].xleft, b[20].ytop, b[20].xright);
 
 	//EI();

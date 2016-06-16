@@ -324,7 +324,7 @@ Docking=True
 DockingStyle=61440
 ExStyle=3889
 MDIChild=False
-MRUDockBottomPos=135
+MRUDockBottomPos=267
 MRUDockID=0
 MRUDockLeftPos=1
 MRUDockRightPos=1440
@@ -336,7 +336,7 @@ MRUFloatStyle=4
 MRUFloatXPos=-2147483648
 MRUFloatYPos=4217936
 MRUHorzDockCX=1439
-MRUHorzDockCY=130
+MRUHorzDockCY=262
 MRUVertDockCX=300
 MRUVertDockCY=180
 PctWidth=1000000
@@ -355,7 +355,7 @@ Docking=True
 DockingStyle=61440
 ExStyle=3889
 MDIChild=False
-MRUDockBottomPos=609
+MRUDockBottomPos=477
 MRUDockID=0
 MRUDockLeftPos=0
 MRUDockRightPos=180
@@ -369,7 +369,7 @@ MRUFloatYPos=4664016
 MRUHorzDockCX=300
 MRUHorzDockCY=180
 MRUVertDockCX=180
-MRUVertDockCY=611
+MRUVertDockCY=479
 PctWidth=1000000
 PrevFloating=False
 ResourceID=0
@@ -492,84 +492,40 @@ ptn_Child2=ChildFrames
 ptn_Child1=Document-0
 ptn_Child2=Document-1
 ptn_Child3=Document-2
-ptn_Child4=Document-3
-ptn_Child5=Document-4
-ptn_Child6=Document-5
-ptn_Child7=Document-6
 
 [WorkState_v1_1.Frames.ChildFrames.Document-0]
 ptn_Child1=ViewFrame-0
 
 [WorkState_v1_1.Frames.ChildFrames.Document-0.ViewFrame-0]
-DocPathName=ANSIproject\main.c
+DocPathName=INCLUDE\SRC\Block.c
 DocTemplateIndex=0
 DocumentString=IDE Document
-IsActiveChildFrame=False
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAHBAAAAAAGAAAAAAAOAAAAAAAAMEAAAAABLBAAAAA
+IsActiveChildFrame=True
+WindowPlacement=MCAAAAAAAAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPMPPPPPPPJOPPPPPPGBAAAAAAGBAAAAAAEHEAAAAAKDBAAAAA
 
 [WorkState_v1_1.Frames.ChildFrames.Document-1]
 ptn_Child1=ViewFrame-0
 
 [WorkState_v1_1.Frames.ChildFrames.Document-1.ViewFrame-0]
-DocPathName=include\src\ansi.c
+DocPathName=include\Block.h
 DocTemplateIndex=0
 DocumentString=IDE Document
 IsActiveChildFrame=False
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAHBAAAAAAMAAAAAAAEPPPPPPPMNDAAAAAOMBAAAAA
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAHBAAAAAAMCAAAAAAMCAAAAAAKIEAAAAAAFBAAAAA
 
 [WorkState_v1_1.Frames.ChildFrames.Document-2]
 ptn_Child1=ViewFrame-0
 
 [WorkState_v1_1.Frames.ChildFrames.Document-2.ViewFrame-0]
-DocPathName=include\src\initLevel.c
+DocPathName=ANSIproject\main.c
 DocTemplateIndex=0
 DocumentString=IDE Document
 IsActiveChildFrame=False
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAHBAAAAAACEAAAAAACEAAAAAAOFEAAAAAJNBAAAAA
-
-[WorkState_v1_1.Frames.ChildFrames.Document-3]
-ptn_Child1=ViewFrame-0
-
-[WorkState_v1_1.Frames.ChildFrames.Document-3.ViewFrame-0]
-DocPathName=include\src\LED.c
-DocTemplateIndex=0
-DocumentString=IDE Document
-IsActiveChildFrame=False
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAHBAAAAAAIFAAAAAAIFAAAAAAEHEAAAAAPOBAAAAA
-
-[WorkState_v1_1.Frames.ChildFrames.Document-4]
-ptn_Child1=ViewFrame-0
-
-[WorkState_v1_1.Frames.ChildFrames.Document-4.ViewFrame-0]
-DocPathName=include\src\lut.c
-DocTemplateIndex=0
-DocumentString=IDE Document
-IsActiveChildFrame=False
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAHBAAAAAAOGAAAAAAOGAAAAAAKIEAAAAAFACAAAAA
-
-[WorkState_v1_1.Frames.ChildFrames.Document-5]
-ptn_Child1=ViewFrame-0
-
-[WorkState_v1_1.Frames.ChildFrames.Document-5.ViewFrame-0]
-DocPathName=include\src\Block.c
-DocTemplateIndex=0
-DocumentString=IDE Document
-IsActiveChildFrame=True
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPOGAAAAAAOGAAAAAAKIEAAAAAFACAAAAA
-
-[WorkState_v1_1.Frames.ChildFrames.Document-6]
-ptn_Child1=ViewFrame-0
-
-[WorkState_v1_1.Frames.ChildFrames.Document-6.ViewFrame-0]
-DocPathName=include\Block.h
-DocTemplateIndex=0
-DocumentString=IDE Document
-IsActiveChildFrame=False
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPEIAAAAAAEIAAAAAAAKEAAAAALBCAAAAA
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPMPPPPPPPJOPPPPPPCEAAAAAACEAAAAAAAKEAAAAAGGBAAAAA
 
 [WorkState_v1_1.Frames.MainFrame]
-Title=Ex2 -- ZDS II - Z8 Encore! Family -- Block.c*
-WindowPlacement=MCAAAAAAAAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAGBAAAAAAAAAAAAAACBAAAAAAALEAAAAACKDAAAAA
+Title=Arkanoid -- ZDS II - Z8 Encore! Family -- Block.c* - [Block.c*]
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPAAAAAAAAHBAAAAAAMPPPPPPPGBAAAAAAEKFAAAAAEIDAAAAA
 
 [WorkState_v1_1.ToolBarMgr]
 CoolLook=True
