@@ -7,21 +7,26 @@
 #include "angleCalc.h"
 #include "io.h"
 #include "life.h"
+#include "block.h"
 
 extern int halfMilisec ;
 
 void game() {
-	short k = 0;
+	short k = 0, level = 2;
 	short strikerPosition = STRIKER_START_POSITION;		/// vi starter på midsten af skærmen
 	char oldkey = 0 , newkey;
+	char blocks[50][3];
 	struct BallPos ball;
 	struct lives life;
+	struct block b[NUM_BLOCKS];
 	color(1,0);
 	clrscr();
 	drawBorder(2);
 	initStriker();
 	initBall( &ball );
 	initLife( &life );
+//	initLevel( blocks , level);
+//	initLevels(b, level);
 	do {
 		if ( halfMilisec >= 64 ) {
 			newkey = readKey();
@@ -41,8 +46,9 @@ void game() {
 				drawStriker( strikerPosition );
 			}
 			if ( 1 == k ) {
-				drawBall( &ball , strikerPosition);
-				angleCalculation( &ball , collisionDetect( &ball, strikerPosition , &life) );
+				drawBall( &ball , strikerPosition );		//// opdater bolden og læg vektor til
+				////////// regn ny vektor hvis der er en kollision
+				angleCalculation( &ball , collisionDetect( &ball, strikerPosition , &life, b) );
 				k = 0;
 			} else {
 				k++;

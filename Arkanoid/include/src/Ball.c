@@ -26,11 +26,11 @@ void drawBall(struct BallPos * ball, short strikerPosition ){
 		gotoxy((*ball).x >> 14 ,(*ball).y >> 14); 	//goes to old ball position
 		printf("%c", 32 );							// removes the old ball
 		///////////////////////////////////////////////////
-		//	nedenstÃ¥ende er for at korrigere for evt. langsom kode
-		//  koden tjekker om den burde flytte mere end Ã©n vektor
+		//	nedenstående er for at korrigere for evt. langsom kode
+		//  koden tjekker om den burde flytte mere end én vektor
 		// 
-		// bolden kan dog godt flybe udenfor banen hvis for loopet kÃ¸rer mere end en gang. 
-		// men den burde blvier fÃ¸rt tilbage pÃ¥ banen i angleCalc.c
+		// bolden kan dog godt flybe udenfor banen hvis for loopet kører mere end en gang. 
+		// men den burde blvier ført tilbage på banen i angleCalc.c
 		//////////////////////////////////////////////////
 		for ( i = 0; i < halfMilisec >> 6 ; i++ ) {	
 			(*ball).x = (*ball).x + (*ball).xV ;		// generates new X position
@@ -44,8 +44,8 @@ void drawBall(struct BallPos * ball, short strikerPosition ){
 		printf("%c", 32 );							// removes the old ball
 		(*ball).x = (long) strikerPosition + 7 << 14;	// generates new X position
 		(*ball).y = 58 << 14;						// generates new Y position
-		(*ball).xV = 1 << 14 ;
-		(*ball).yV = 1 << 14;
+		(*ball).xV = 1 << 14;
+		(*ball).yV = 1 << 14 ;
 		gotoxy((*ball).x >> 14 ,(*ball).y >> 14); 	// goes to new ball position
 		printf("%c", 111); 							// prints the ball at the new position
 	}

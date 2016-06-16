@@ -9,7 +9,7 @@ struct BallPos{
     long x,y;
 	long xV, yV;
 };
-
+/*
 long expand(long i) {
 	// converts an 18.14 to a 16.16
 	return i << 2;
@@ -31,16 +31,12 @@ void initVector(struct TVector * v, long x, long y){
 	printf("input: %ld,%ld\n", x, y );
 	printf("stored: (%ld,%ld)\n",(*v).x ,(*v).y);
 }
-
+*/
 void rotate(struct BallPos * ball, int a ){
 	long xV = (*ball).xV;
 	long yV = (*ball).yV;
-	gotoxy(10, 63);
-	printf("rotate: %ld  %ld ", (*ball).xV , (*ball).yV );
 	(*ball).xV =  (FIX14_MULT( xV,  cos(a)) - FIX14_MULT( yV,  sin(a) )) ;
 	(*ball).yV =  (FIX14_MULT( xV,  sin(a)) + FIX14_MULT( yV,  cos(a) )) ;
-	gotoxy(10, 64);
-	printf("rotate: %ld  %ld ", (*ball).xV , (*ball).yV );
 }
 
 void angleCalculation( struct BallPos * ball , int collision ){

@@ -3,7 +3,7 @@
 #include "life.h"
 #include "ball.h"
 
-int collisionDetect( struct BallPos * ball, short strikerPos , struct lives * life){
+int collisionDetect( struct BallPos * ball, short strikerPos , struct lives * life, struct block * b ){
 	if ( (*ball).x >> 14 <= 2 || (*ball).x >> 14 >= RESOLUTION_X - 1 ){	// window sides hit
 		return 1;
 	} else if ( (*ball).y >> 14 <= 2) {							// window top hit
@@ -24,7 +24,7 @@ int collisionDetect( struct BallPos * ball, short strikerPos , struct lives * li
 					&& (*ball).x >> 14 <= strikerPos + 5 * ( STRIKER_WIDTH / 5 ) - 1 ) {
 			return 7;										// hit right
 		} else {											// didnt hit striker (dead)
-			lifeChanger( life );
+			removeLife( life );
 			despawn( ball );
 			initBall( ball );
 			return -1;										// striker not hit

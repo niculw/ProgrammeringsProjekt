@@ -8,6 +8,6 @@ struct lives{
 void initLife( struct lives * L );
 void printLife( struct lives * life );
 void addLife( struct lives * life );
-void lifeChanger( struct lives * L );
+void removeLife( struct lives * life );
 
 #endif
