@@ -3,12 +3,13 @@
 
 int videoBuffer[5][6];
 int timeForRefresh = 0;
-
+/*
 #pragma interrupt
 void refreshDisplay() {
 	timeForRefresh = 1;
 }
-
+*/
+/*
 void LEDinit(){
 	/////////////////////////////////////////////////// LED config
 	PEDD = 0x00;                                     // 1 for input 0 for output
@@ -23,10 +24,10 @@ void LEDinit(){
 	T0RL = 0x00;			// set reload low value
 	T0H = 0x00;				// timer byte high = 00000000
 	T0L = 0x01;				// timer byte low = 00000001
-	T0CTL = 0x81;				// 1000 0001
+	T0CTL = 0x81;			// 1000 0001 // enable and continious mode
 	EI();
 }
-
+*/
 void LEDsetString( char string[] ){
 	int i,j;
 	for ( i = 0; i < 5; i++){

@@ -3,13 +3,13 @@
 #include "ANSI.h"
 #include "StopWatch.h"
 
-int milisec = 0;
-
+// int milisec = 0;
+/*
 #pragma interrupt 
 void timer0int() { 
 	milisec += 10;
 }
-
+*/
 void calcTime( struct time * t ){
 	if (milisec < 990 ) {
 		(*t).milisec = milisec;

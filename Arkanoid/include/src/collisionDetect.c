@@ -25,7 +25,8 @@ int collisionDetect( struct BallPos * ball, short strikerPos , struct lives * li
 			return 7;										// hit right
 		} else {											// didnt hit striker (dead)
 			lifeChanger( life );
-			despawn( ball , strikerPos);
+			despawn( ball );
+			initBall( ball );
 			return -1;										// striker not hit
 		}
 	} else if ( 1 != 1 ) {									// hit block button or top
