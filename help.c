@@ -139,19 +139,30 @@ else if (sel == 2){
 	printf("##    @ - Extra life                                                                      ##"); gotoxy( XPOS, YPOS + 5 );
 	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 6 );
 	printf("##    / - reduces width of striker                                                        ##"); gotoxy( XPOS, YPOS + 7 );
-	printf("##                                                              			  ##"); gotoxy( XPOS, YPOS + 8 );
+	printf("##                                                              			              ##"); gotoxy( XPOS, YPOS + 8 );
 	printf("##    + - increases the width of striker                                                  ##"); gotoxy( XPOS, YPOS + 9 );
 	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 10 );
 	printf("##    * - spawns an extra ball                                                            ##"); gotoxy( XPOS, YPOS + 11 );
 	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 12 );
 	printf("##    ÷ - removes a life                                                                  ##"); gotoxy( XPOS, YPOS + 13 );
 	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 14 );
-	printf("############################################################################################"); gotoxy( XPOS, YPOS + 15 );
-	printf("############################################################################################"); gotoxy( XPOS, YPOS + 16 );
+	printf("##   %d - doubles ball speed                                                              ##",253); gotoxy( XPOS, YPOS + 15 );
+	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 16 );
+	printf("##   %d - halves ball speed                                                               ##", 171); gotoxy( XPOS, YPOS + 17 );
+	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 18 );
+	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 19 );
+	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 20 );
+	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 21 );
+	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 22 );
+	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 23 );
+	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 24 );    
+	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 25 );
+	printf("############################################################################################"); gotoxy( XPOS, YPOS + 26 );
+	printf("############################################################################################"); gotoxy( XPOS, YPOS + 27 );
 }
 if (knapkonstant == 2){
 	printf("                                                                                            "); gotoxy( XPOS, YPOS + 1 );
-	printf("                                                                                            ");	gotoxy( XPOS, YPOS + 2 );
+	printf("                                                                                            ");	gotoxy( XPOS, YPOS + 2 );									
 	printf("                                                                                            "); gotoxy( XPOS, YPOS + 3 );
 	printf("                                                                                            "); gotoxy( XPOS, YPOS + 4 );
 	printf("                                                                                            "); gotoxy( XPOS, YPOS + 5 );
@@ -172,6 +183,12 @@ if (knapkonstant == 2){
 	printf("                                                                                            "); gotoxy( XPOS, YPOS + 20 );
 	printf("                                                                                            "); gotoxy( XPOS, YPOS + 21 );
 	printf("                                                                                            "); gotoxy( XPOS, YPOS + 22 );
+	printf("                                                                                            "); gotoxy( XPOS, YPOS + 23 );
+	printf("                                                                                            "); gotoxy( XPOS, YPOS + 24 );
+	printf("                                                                                            "); gotoxy( XPOS, YPOS + 25 );
+	printf("                                                                                            "); gotoxy( XPOS, YPOS + 26 );
+	printf("                                                                                            "); gotoxy( XPOS, YPOS + 27 );
+
 initMenu();
 }
 }
