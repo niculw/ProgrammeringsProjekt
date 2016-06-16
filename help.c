@@ -52,7 +52,7 @@ void helpSel( short i ){
 	goRight( XPOS + 5 );
 	printf("    \n");
 	goRight( XPOS + 5 );
-	///////////////////// sætter kryds i det menu-punkt man vælger.
+	///////////////////// sÃ¦tter kryds i det menu-punkt man vÃ¦lger.
 	switch ( i ) {
 		case 1 :
 			gotoxy(XPOS + 6, YPOS + 5);		
@@ -139,12 +139,12 @@ else if (sel == 2){
 	printf("##    @ - Extra life                                                                      ##"); gotoxy( XPOS, YPOS + 5 );
 	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 6 );
 	printf("##    / - reduces width of striker                                                        ##"); gotoxy( XPOS, YPOS + 7 );
-	printf("##                                                              			              ##"); gotoxy( XPOS, YPOS + 8 );
+	printf("##                                                              			  ##"); gotoxy( XPOS, YPOS + 8 );
 	printf("##    + - increases the width of striker                                                  ##"); gotoxy( XPOS, YPOS + 9 );
 	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 10 );
 	printf("##    * - spawns an extra ball                                                            ##"); gotoxy( XPOS, YPOS + 11 );
 	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 12 );
-	printf("##    ÷ - removes a life                                                                  ##"); gotoxy( XPOS, YPOS + 13 );
+	printf("##    Ã· - removes a life                                                                  ##"); gotoxy( XPOS, YPOS + 13 );
 	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 14 );
 	printf("##   %d - doubles ball speed                                                              ##",253); gotoxy( XPOS, YPOS + 15 );
 	printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 16 );
