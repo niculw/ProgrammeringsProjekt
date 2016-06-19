@@ -40,13 +40,19 @@ void rotate(struct BallPos * ball, int a ){
 }
 
 void angleCalculation( struct BallPos * ball , int collision ){
+	static int debug = 5;
+	if (collision != 0){
+		gotoxy(5,debug);
+		printf("%d", collision);
+		debug++;
+	}
 	switch (collision) {
 		case 0 :								/// no collision
 			break;
-		case 1 :								/// window sides hit
+		case 1 :								/// window sides hit OR block sides hit
 			(*ball).xV = -(*ball).xV;
 			break;
-		case 2 :								/// window top hit
+		case 2 :								/// window top hit OR block button/top hit
 			(*ball).yV = -(*ball).yV;
 			break;
 		case 3 :								/// left striker hit
@@ -88,5 +94,6 @@ void angleCalculation( struct BallPos * ball , int collision ){
 			}
 
 			break;
+		
 	}
 }

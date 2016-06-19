@@ -9,8 +9,8 @@ extern int halfMilisec;
 void initBall( struct BallPos * ball ){
 	(*ball).x = STRIKER_START_POSITION + 7 << 14; // initates the ball at x-coordinate
 	(*ball).y = 58 << 14; // initates the ball at y-coordinate
-	(*ball).xV = 1 << 14;  //No change in x-coordinate until striker is hit
-	(*ball).yV = 1 << 14; //Ball starts out by dropping
+	(*ball).xV = 11585; //1 << 14;  //No change in x-coordinate until striker is hit
+	(*ball).yV = 11585; //1 << 14; //Ball starts out by dropping
 	ball->ballStarted = 0;
 }
 
@@ -44,8 +44,8 @@ void drawBall(struct BallPos * ball, short strikerPosition ){
 		printf("%c", 32 );							// removes the old ball
 		(*ball).x = (long) strikerPosition + 7 << 14;	// generates new X position
 		(*ball).y = 58 << 14;						// generates new Y position
-		(*ball).xV = 1 << 14;
-		(*ball).yV = 1 << 14 ;
+		(*ball).xV = 11585; 
+		(*ball).yV = 11585; 
 		gotoxy((*ball).x >> 14 ,(*ball).y >> 14); 	// goes to new ball position
 		printf("%c", 111); 							// prints the ball at the new position
 	}

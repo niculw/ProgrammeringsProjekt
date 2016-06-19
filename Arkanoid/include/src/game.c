@@ -12,10 +12,10 @@
 extern int halfMilisec ;
 
 void game() {
-	short k = 0, level = 2;
+	short k = 0, level = 1;
 	short strikerPosition = STRIKER_START_POSITION;		/// vi starter på midsten af skærmen
 	char oldkey = 0 , newkey;
-	char blocks[50][3];
+	char blocks[25][22];
 	struct BallPos ball;
 	struct lives life;
 	struct block b[NUM_BLOCKS];
@@ -25,7 +25,8 @@ void game() {
 	initStriker();
 	initBall( &ball );
 	initLife( &life );
-//	initLevel( blocks , level);
+	initLevel( blocks , level);
+	printBlocks( blocks );
 //	initLevels(b, level);
 	do {
 		if ( halfMilisec >= 64 ) {
@@ -48,7 +49,7 @@ void game() {
 			if ( 1 == k ) {
 				drawBall( &ball , strikerPosition );		//// opdater bolden og læg vektor til
 				////////// regn ny vektor hvis der er en kollision
-				angleCalculation( &ball , collisionDetect( &ball, strikerPosition , &life, b) );
+				angleCalculation( &ball , collisionDetect( &ball, strikerPosition , &life, blocks ) );
 				k = 0;
 			} else {
 				k++;

@@ -112,9 +112,9 @@ void printHelp(char sel){
 		printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 12 );
 		printf("##    รท - removes a life                                                                 ##"); gotoxy( XPOS, YPOS + 13 );
 		printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 14 );
-		printf("##   %c - doubles ball speed                                                               ##",253); gotoxy( XPOS, YPOS + 15 );
+		printf("##    ฒ - doubles ball speed                                                              ##"); gotoxy( XPOS, YPOS + 15 );
 		printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 16 );
-		printf("##   %c - halves ball speed                                                                ##", 171); gotoxy( XPOS, YPOS + 17 );
+		printf("##    ฝ - halves ball speed                                                               ##"); gotoxy( XPOS, YPOS + 17 );
 		printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 18 );
 		printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 19 );
 		printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 20 );
