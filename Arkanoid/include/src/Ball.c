@@ -44,8 +44,8 @@ void drawBall(struct BallPos * ball, short strikerPosition ){
 		printf("%c", 32 );							// removes the old ball
 		(*ball).x = (long) strikerPosition + 7 << 14;	// generates new X position
 		(*ball).y = 58 << 14;						// generates new Y position
-		(*ball).xV = 11585; //1 << 14;
-		(*ball).yV = 11585; //1 << 14 ;
+		(*ball).xV = 11585; 
+		(*ball).yV = 11585; 
 		gotoxy((*ball).x >> 14 ,(*ball).y >> 14); 	// goes to new ball position
 		printf("%c", 111); 							// prints the ball at the new position
 	}

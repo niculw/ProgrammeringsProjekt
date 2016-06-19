@@ -15,7 +15,7 @@ void game() {
 	short k = 0, level = 1;
 	short strikerPosition = STRIKER_START_POSITION;		/// vi starter på midsten af skærmen
 	char oldkey = 0 , newkey;
-	char blocks[25][20];
+	char blocks[25][22];
 	struct BallPos ball;
 	struct lives life;
 	struct block b[NUM_BLOCKS];
