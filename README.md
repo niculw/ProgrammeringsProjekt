@@ -6,10 +6,11 @@ Bugs:
 - window corner collision
 
 Missing functions:
-- Points
 - Next level 
 - new levels
 
 Fixed:
-- block life
 - menu select error
+
+Added Points
+Added block life
