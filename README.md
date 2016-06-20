@@ -6,8 +6,10 @@ Bugs:
 - window corner collision
 
 Missing functions:
-- Next level 
+- Next level og restart level
 - new levels
+- Highscore 
+- Powerups
 
 Fixed:
 - menu select error
