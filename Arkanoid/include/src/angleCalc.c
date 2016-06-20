@@ -40,12 +40,12 @@ void rotate(struct BallPos * ball, int a ){
 }
 
 void angleCalculation( struct BallPos * ball , int collision ){
-	static int debug = 5;
+/*	static int debug = 5;
 	if (collision != 0){
 		gotoxy(5,debug);
 		printf("%d", collision);
 		debug++;
-	}
+	}*/
 	switch (collision) {
 		case 0 :								/// no collision
 			break;
@@ -92,8 +92,10 @@ void angleCalculation( struct BallPos * ball , int collision ){
 			} else {
 				rotate( ball , 224 );			// 157.5 grader
 			}
-
 			break;
-		
+		case 8 :
+			(*ball).xV = -(*ball).xV;
+			(*ball).yV = -(*ball).yV;
+			break;
 	}
 }
