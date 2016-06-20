@@ -14,10 +14,10 @@ void initHelp(){
 	printf("###                                                                                      ###"); gotoxy( XPOS, YPOS + 3 );
 	printf("###                                                                                      ###"); gotoxy( XPOS, YPOS + 4 );
 	printf("###                ____            _             _                                       ###"); gotoxy( XPOS, YPOS + 5 );
-	printf("###  |#  #|       / ___|___  _ __ | |_ _ __ ___ | |___                                   ###"); gotoxy( XPOS, YPOS + 6 );
-	printf("###  | ## |      | |   / _ \| '_ \| __| '__/ _ \| / __|                                  ###"); gotoxy( XPOS, YPOS + 7 );
-	printf("###  | ## |      | |__| (_) | | | | |_| | | (_) | \__ \                                  ###"); gotoxy( XPOS, YPOS + 8 );
-	printf("###  |#  #|       \____\___/|_| |_|\__|_|  \___/|_|___/                                  ###"); gotoxy( XPOS, YPOS + 9 );
+	printf("###  |    |       / ___|___  _ __ | |_ _ __ ___ | |___                                   ###"); gotoxy( XPOS, YPOS + 6 );
+	printf("###  |    |      | |   / _ \| '_ \| __| '__/ _ \| / __|                                  ###"); gotoxy( XPOS, YPOS + 7 );
+	printf("###  |    |      | |__| (_) | | | | |_| | | (_) | \__ \                                  ###"); gotoxy( XPOS, YPOS + 8 );
+	printf("###  |    |       \____\___/|_| |_|\__|_|  \___/|_|___/                                  ###"); gotoxy( XPOS, YPOS + 9 );
 	printf("###                                                                                      ###"); gotoxy( XPOS, YPOS + 10 );
 	printf("###                                                                                      ###"); gotoxy( XPOS, YPOS + 11 );
 	printf("###                                                                                      ###"); gotoxy( XPOS, YPOS + 12 );

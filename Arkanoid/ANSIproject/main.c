@@ -53,13 +53,11 @@ void main() {
 	printf("%c[?25l",0x1B);			// fjerner kurseren
 	clrscr();
 	initMenu();
+	menuSel(menuPunkt);
 	reverse('p');					// sikrer at reverse er slået fra ved opstart
 
 //	color(1,0);
 //	LEDinit();
-
-//	printBlocks(&b, 2, 2, 4);
-
 	do {
 		newkey = readKey();
 		if( 0 != newkey ) {					// hvis vi har trykket på en knap
@@ -108,14 +106,15 @@ void main() {
 							 	if ( 0 == menuSelector ) {					// vi er i hovedmenuen
 									clrscr();
 									menuSelector = 1;
-									menuPunkt = 1;
 									initHelp();
+									menuSel(menuPunkt);
 									// gå til help menu
 								} else if ( 2 == menuSelector) {			// vi er i Highscore menuen
 									
 								} else if ( 1 == menuSelector) {			// vi er i help menuen
 									clrscr();
 									initMenu();
+									menuSel(menuPunkt);
 									menuSelector = 0;
 								}
 							 	break; 
@@ -125,7 +124,7 @@ void main() {
 					} else {
 						clrscr();
 						initHelp();
-						menuPunkt = 1;
+						menuSel(menuPunkt);
 						menuSelector = 1;
 					}
 				} else if ( 4 == newkey ) {

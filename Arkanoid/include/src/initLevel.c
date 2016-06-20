@@ -66,7 +66,6 @@ void initLevel( char block[25][22] , short level ){
 void printBlocks( char block[25][22] ) {
 	int i,j,k;
 	unsigned char health = 175;
-//	reverse('o');
 	int debug = 5;
 	gotoxy( 2 , 2 );
 	for ( i = 0 ; i < 23 ; i++ ){
@@ -92,23 +91,8 @@ void printBlocks( char block[25][22] ) {
 			}
 		}
 	}
-//	reverse('p');
 }
-/*
-void removeBlockLife( char block[25][22], unsigned char i, unsigned char j ) {
-	int x;
-	if ( block[i][j] & 0x08 != 0x08){								/// er blokken indestructible ?
-		if ( block[i][j] & 0x06 == 0x02 ){							// er det det sidste blok liv der fjernes?
-			block[i][j] &= 0xF0;									// fjerner det sidste liv og gør blokken inaktiv
-		} else {													// ere end et blok liv tilbage
-			x = ( block[i][j] & 0x06 ) >> 1;
-			x--;
-			x <<= 1;
-			block[i][j] |= !x;
-			block[i][j] &= x;
-		}
-	}
-}*/
+
 
 void removeBlockLife( char * block ) {
 	int x;
