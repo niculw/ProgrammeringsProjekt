@@ -2,7 +2,6 @@
 
 Bugs:
 - striker collision angle reflect
-- menu select error
 - border/block collision
 - window corner collision
 
@@ -13,3 +12,4 @@ Missing functions:
 
 Fixed:
 - block life
+- menu select error
