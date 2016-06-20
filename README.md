@@ -11,4 +11,6 @@ Missing functions:
 - Points
 - Next level 
 - new levels
+
+Fixed:
 - block life
