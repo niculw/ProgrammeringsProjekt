@@ -14,10 +14,10 @@ void initMenu(){
 	printf("###                                                                                      ###"); gotoxy( XPOS, YPOS + 3 );
 	printf("###             _____ ______   ____  ____  ______       ____   ____  ___ ___    ___      ###"); gotoxy( XPOS, YPOS + 4 );
 	printf("###            / ___/|      T /    T|    \|      T     /    T /    T|   T   T  /  _]     ###"); gotoxy( XPOS, YPOS + 5 );
-	printf("###  |#  #|   (   \_ |      |Y  o  ||  D  )      |    Y   __jY  o  || _   _ | /  [_      ###"); gotoxy( XPOS, YPOS + 6 );
-	printf("###  | ## |    \__  Tl_j  l_j|     ||    /l_j  l_j    |  T  ||     ||  \_/  |Y    _]     ###"); gotoxy( XPOS, YPOS + 7 );
-	printf("###  | ## |    /  \ |  |  |  |  _  ||    \  |  |      |  l_ ||  _  ||   |   ||   [_      ###"); gotoxy( XPOS, YPOS + 8 );
-	printf("###  |#  #|    \    |  |  |  |  |  ||  .  Y |  |      |     ||  |  ||   |   ||     T     ###"); gotoxy( XPOS, YPOS + 9 );
+	printf("###  |    |   (   \_ |      |Y  o  ||  D  )      |    Y   __jY  o  || _   _ | /  [_      ###"); gotoxy( XPOS, YPOS + 6 );
+	printf("###  |    |    \__  Tl_j  l_j|     ||    /l_j  l_j    |  T  ||     ||  \_/  |Y    _]     ###"); gotoxy( XPOS, YPOS + 7 );
+	printf("###  |    |    /  \ |  |  |  |  _  ||    \  |  |      |  l_ ||  _  ||   |   ||   [_      ###"); gotoxy( XPOS, YPOS + 8 );
+	printf("###  |    |    \    |  |  |  |  |  ||  .  Y |  |      |     ||  |  ||   |   ||     T     ###"); gotoxy( XPOS, YPOS + 9 );
 	printf("###             \___j  l__j  l__j__jl__j\_j l__j      l___,_jl__j__jl___j___jl_____j     ###"); gotoxy( XPOS, YPOS + 10 );
 	printf("###                                                                                      ###"); gotoxy( XPOS, YPOS + 11 );
 	printf("###              __ __  ____   ____  __ __  _____   __   ___   ____     ___  _____       ###"); gotoxy( XPOS, YPOS + 12 );

@@ -12,5 +12,6 @@ void removeBlockLife( char * block );
 void updateBlock( char * block , unsigned char i, unsigned char j);
 void initLevel( char block[25][22] , short level );
 void printBlocks( char block[25][22] );
+void level1( char block[25][22] );
 
 #endif
