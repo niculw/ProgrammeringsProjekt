@@ -12,5 +12,6 @@ Missing functions:
 Fixed:
 - menu select error
 
-Added Points
-Added block life
+Added:
+- Points
+- block life
