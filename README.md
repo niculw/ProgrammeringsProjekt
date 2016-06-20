@@ -6,9 +6,11 @@ Bugs:
 - window corner collision
 
 Missing functions:
-- Points
 - Next level 
 - new levels
+
+Added:
+- Point system
 
 Fixed:
 - block life
