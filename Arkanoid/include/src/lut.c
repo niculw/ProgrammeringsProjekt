@@ -86,8 +86,8 @@ const signed short SIN[512]=
 	0xF9BA,0xFA82,0xFB4B,0xFC13,0xFCDC,0xFDA5,0xFE6E,0xFF37,
 };
 signed long sin(signed long i){
-	return  SIN[i % 512];
+	return  SIN[i & 0x01FF];
 }
 signed long cos(signed long i){
-	return  SIN[(i + 128) % 512];
+	return  SIN[(i + 128) & 0x01FF];
 }

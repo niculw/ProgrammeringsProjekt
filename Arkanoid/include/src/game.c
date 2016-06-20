@@ -1,4 +1,7 @@
+#include <eZ8.h>             // special encore constants, macros and flash routines
+#include <sio.h>             // special encore serial i/o routines
 #include "defines.h"  
+#include "game.h"
 #include "ansi.h"
 #include "initLevel.h"
 #include "Striker.h"
@@ -11,22 +14,41 @@
 
 extern int halfMilisec ;
 
+void initControl( struct controlData * ctrlData ){
+	(*ctrlData).point = 0;
+	(*ctrlData).level = 1;
+	(*ctrlData).blockCount = 0;
+	(*ctrlData).playerLife = 3;
+	printLife( ctrlData );
+}
+
+void printControlData( struct controlData * ctrlData ){
+	color(7,0);
+	gotoxy(165,40);
+	printf("Points: %4d",(*ctrlData).point );
+	gotoxy(165,41);
+	printf("Blocks left: %3d",(*ctrlData).blockCount);
+	gotoxy(165,42);
+	printf("Level: %2d", (*ctrlData).level);
+} 
 void game() {
 	short k = 0, level = 1;
 	short strikerPosition = STRIKER_START_POSITION;		/// vi starter på midsten af skærmen
 	char oldkey = 0 , newkey;
 	char blocks[25][22];
 	struct BallPos ball;
-	struct lives life;
+//	struct lives life;
 	struct block b[NUM_BLOCKS];
+	struct controlData ctrlData;
 	color(1,0);
 	clrscr();
 	drawBorder(2);
 	initStriker();
+	initControl( &ctrlData );
 	initBall( &ball );
-	initLife( &life );
-	initLevel( blocks , level);
-	printBlocks( blocks );
+//	initLife( &life );
+	initLevel( blocks , &ctrlData);
+	printBlocks( blocks, &ctrlData );
 //	initLevels(b, level);
 	do {
 		if ( halfMilisec >= 64 ) {
@@ -46,10 +68,11 @@ void game() {
 				}
 				drawStriker( strikerPosition );
 			}
-			if ( 1 == k ) {
+			if ( 0 == k ) {
 				drawBall( &ball , strikerPosition );		//// opdater bolden og læg vektor til
 				////////// regn ny vektor hvis der er en kollision
-				angleCalculation( &ball , collisionDetect( &ball, strikerPosition , &life, blocks ) );
+				angleCalculation( &ball , collisionDetect( &ball, strikerPosition , blocks, &ctrlData ) );
+				printControlData( &ctrlData );
 				k = 0;
 			} else {
 				k++;
