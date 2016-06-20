@@ -9,10 +9,10 @@ Missing functions:
 - Next level 
 - new levels
 
-Added:
-- Point system
-
 Fixed:
-- block life
 - menu select error
+
+Added:
+- block life
+- Point system
 
