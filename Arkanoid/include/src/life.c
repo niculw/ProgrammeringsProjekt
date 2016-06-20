@@ -81,6 +81,6 @@ void removeLife( struct lives * life ){
 		gotoxy(GAMEOVER_X,20);
 		printf("###############################################################################################################################");
 	}
-	gotoxy(10, 62);
-	printf("%d", (*life).Lives);
+/*	gotoxy(10, 62);
+	printf("%d", (*life).Lives);*/
 }
