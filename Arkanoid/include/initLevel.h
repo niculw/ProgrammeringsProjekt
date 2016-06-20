@@ -8,10 +8,10 @@ extern const unsigned char LEVEL_1[25][22];
 void drawBorder(int style);
 
 //void removeBlockLife( char block[25][22], unsigned char i, unsigned char j );
-void removeBlockLife( char * block );
-void updateBlock( char * block , unsigned char i, unsigned char j);
-void initLevel( char block[25][22] , short level );
-void printBlocks( char block[25][22] );
+void removeBlockLife( char * block, struct controlData * ctrlData );
+void updateBlock( char * block , unsigned char i, unsigned char j, struct controlData * ctrlData);
+void initLevel( char block[25][22] , struct controlData * ctrlData );
+void printBlocks( char block[25][22], struct controlData * ctrlData );
 void level1( char block[25][22] );
 
 #endif

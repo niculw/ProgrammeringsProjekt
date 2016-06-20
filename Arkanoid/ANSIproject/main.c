@@ -49,15 +49,12 @@ void main() {
 	char oldkey = 0 , newkey;
 	keysetup();						// sæt registre til knapperne
 	init_uart(_UART0,_DEFFREQ,_DEFBAUD);
+	resetbgcolor;
 	initTimer0();
 	printf("%c[?25l",0x1B);			// fjerner kurseren
 	clrscr();
 	initMenu();
 	menuSel(menuPunkt);
-	reverse('p');					// sikrer at reverse er slået fra ved opstart
-
-//	color(1,0);
-//	LEDinit();
 	do {
 		newkey = readKey();
 		if( 0 != newkey ) {					// hvis vi har trykket på en knap
@@ -70,7 +67,7 @@ void main() {
 						menuPunkt = 3;
 					}
 					if (menuSelector < 3){
-						menuSel(menuPunkt);		////////////// kan denne måske placeres uden for if sætningen?
+						menuSel(menuPunkt);		
 					}
 				} else if ( 2 == newkey ) {
 					if (menuSelector < 2) {
@@ -134,7 +131,7 @@ void main() {
 						menuPunkt = 1;
 					}
 					if (menuSelector < 2){
-						menuSel(menuPunkt);		 ////////////// kan denne måske placeres uden for if sætningen?
+						menuSel(menuPunkt);	
 					}
 				}
 			}

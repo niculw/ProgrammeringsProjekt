@@ -5,9 +5,9 @@ struct lives{
     short Lives;
 };
 
-void initLife( struct lives * L );
-void printLife( struct lives * life );
-void addLife( struct lives * life );
-void removeLife( struct lives * life );
+void initLife( struct controlData * ctrlData );
+void printLife( struct controlData * ctrlData );
+void addLife( struct controlData * ctrlData );
+void removeLife( struct controlData * ctrlData );
 
 #endif
