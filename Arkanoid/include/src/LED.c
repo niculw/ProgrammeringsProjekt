@@ -22,7 +22,7 @@ void LEDinit(){
 
 void initVideoBuffer( struct controlData * ctrlData ){
 	char i,j;
-	for (i = 0; i < 5; i++){
+	for (i = 0; i < 4; i++){
 		for (j = 0; j < 5; j++){
 			(*ctrlData).videoBuffer[i][j] = character_data[ 48 - 32 ][ j ];
 		}
@@ -32,7 +32,7 @@ void initVideoBuffer( struct controlData * ctrlData ){
 
 void LEDsetString(struct controlData * ctrlData ){
 	int i,j, n = (*ctrlData).point;
-	for ( i = 0; i < 5; i++){
+	for ( i = 0; i < 4; i++){
 		for ( j = 0; j < 5; j++){
 			(*ctrlData).videoBuffer[i][j] = character_data[ (n % 10) + 16 ][ j ];
 		}
@@ -43,10 +43,10 @@ void LEDsetString(struct controlData * ctrlData ){
 
 void LEDupdate( struct controlData * ctrlData ){
 	int i,j;
-	static int karakter = 0, cl = 4, count = 0, index = 0;
+	static int karakter = 0, cl = 4, count = 0;
 	static char col = 0xFE;									///// 1111 1110
 	PEOUT &= col;									///// tænder for den kolonne vi vil vise
-	PGOUT |= (*ctrlData).videoBuffer[ karakter ][ cl + index ];			///// tænder for de dioder der skal vises på den kolonne
+	PGOUT |= (*ctrlData).videoBuffer[ karakter ][ cl ];			///// tænder for de dioder der skal vises på den kolonne
 	switch (karakter) {								///// vælger hvilket display
 		case 0 :
 			PEOUT |= 0x80;							///// clock 1 high
