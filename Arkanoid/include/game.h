@@ -6,6 +6,7 @@ struct controlData{
 	unsigned char level;
 	unsigned int blockCount;
 	unsigned char playerLife;
+	char videoBuffer[4][6];
 };
 
 void initControl( struct controlData * ctrlData );

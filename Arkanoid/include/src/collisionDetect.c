@@ -18,31 +18,50 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 	printf("ball Pos: %2d %2d",ballX, ballY );
 	gotoxy(5,63);
 	printf("ball Array Pos: %2d %2d",ballXArray, ballYArray );*/
-	if ( ballX <= 2 || ballX >= RESOLUTION_X - 1 ){	// window sides hit
-		return 1;
+	if ( ballX <= 2 || ballX >= RESOLUTION_X - 1 ){		// window sides hit
+		if ( ballY <= 2 ){								// ensures the corners will reflext proterly instead of bugging outside of borders
+			return 8;
+		} else if ( (*ball).yV < 0 && (( ballY - 1 ) >> 1 ) != ballYArray ){	// ball is going up and near side block
+			if (( blocks[ ballYArray - 1 ][ ballXArray ] & 0x01 ) == 0x01 ){		// check if block is active
+				updateBlock( &blocks[ ballYArray - 1 ][ ballXArray ], ballYArray - 1 , ballXArray, ctrlData );
+				return 8;
+			} else return 1;
+		} else if ( (*ball).yV > 0 && (( ballY + 1 ) >> 1 ) != ballYArray ){	// ball is going down and near side block
+			if (( blocks[ ballYArray + 1 ][ ballXArray ] & 0x01 ) == 0x01 ){		// check if block is active
+				updateBlock( &blocks[ ballYArray + 1 ][ ballXArray ], ballYArray + 1 , ballXArray, ctrlData );
+				return 8;
+			} else return 1;
+		} else return 1;
 	} else if ( ballY <= 2) {							// window top hit
-		return 2;
+		if ( (*ball).xV < 0 && (( ballXOffset - 1 ) >> 3 ) != ballXArray ){		// ball is going left and near side block
+			if (( blocks[ ballYArray  ][ ballXArray ] & 0x01 ) == 0x01 ){		// check if block is active
+				updateBlock( &blocks[ ballYArray ][ ballXArray - 1 ], ballYArray , ballXArray - 1, ctrlData );
+				return 8;
+			} else return 2;
+		} else if ( (*ball).xV > 0 && (( ballXOffset + 1 ) >> 3 ) != ballXArray ){	// ball is going right and near side block
+			if (( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 ) == 0x01 ){		// check if block is active
+				updateBlock( &blocks[ ballYArray ][ ballXArray + 1 ], ballYArray , ballXArray + 1, ctrlData );
+				return 8;
+			} else return 2;
+		}
+		else return 2;
 	} else if ( ballY >= RESOLUTION_Y - 2 ) {			// possable stikrer hit
 		if ( ballX >= strikerPos && ballX <= strikerPos + 2 ){
 			return 3;										// hit left 
-		} else if ( ballX > strikerPos + 2
-					&& ballX <= strikerPos + 5) {
+		} else if ( ballX > strikerPos + 2 && ballX <= strikerPos + 5) {
 			return 4;										// hit left middle
-		} else if ( ballX > strikerPos + 5 
-					&& ballX <= strikerPos + 8 ) {
+		} else if ( ballX > strikerPos + 5 && ballX <= strikerPos + 8 ) {
 			return 5;										// hit middle
-		} else if ( ballX > strikerPos + 8 
-					&& ballX <= strikerPos + 11 ) {
+		} else if ( ballX > strikerPos + 8 && ballX <= strikerPos + 11 ) {
 			return 6;										// hit right middle
-		} else if ( ballX > strikerPos + 11 
-					&& ballX <= strikerPos + 14 ) {
+		} else if ( ballX > strikerPos + 11 && ballX <= strikerPos + 14 ) {
 			return 7;										// hit right
-		} else {											// didnt hit striker (remove life)
+		} else if (ballY >= RESOLUTION_Y - 1 ){											// didnt hit striker (remove life)
 			removeLife( ctrlData );
 			despawn( ball );
 			initBall( ball );
-			return -1;										// striker not hit
-		}
+			return -1;										// striker not hit but we lost a life
+		} else return 0;
 	} else if ( ( ballY ) < 49 ){						// check if ball is inside block array
 		if ((*ball).yV > 0 ) {												// yV positiv
 			if ( (*ball).xV > 0 ) {											// xV og yV er positive

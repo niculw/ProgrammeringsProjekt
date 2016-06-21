@@ -1,5 +1,5 @@
-#include <time.h>
-#include <stdlib.h>
+#include <eZ8.h>             // special encore constants, macros and flash routines
+#include <sio.h>             // special encore serial i/o routines
 #include "ansi.h"
 #include "defines.h"
 #include "powerup.h"
@@ -10,7 +10,7 @@
 
 
 
-void initPowerup(struct BallPos * ball,struct powerup * p ){
+void initPowerup( struct BallPos * ball, struct powerup * p ){
 	(*p).x = (*ball).x // initates the powerup at x-coordinate
 	(*p).y = (*ball).y; // initates the powerup at y-coordinate
 	(*p).xV = 0;  // NO change in X-coordinate
@@ -35,24 +35,24 @@ void despawn((struct powerup * p){
 	}
 
 
-void powerup(int bh,struct powerup * p, struct lives * L, collisionDetect, int STRIKER_WIDTH, BallPos * ball);
+void powerup(int bh,struct powerup * p, struct lives * L, collisionDetect, int STRIKER_WIDTH, struct BallPos * ball);
 	if (bh == 1){
 		int r = rand(15); // random tal
 		if (r == 8){
-		initPowerup();
-		drawPowerup(40);
+			initPowerup();
+			drawPowerup(40);
 
-		if (collisionDetect > 10){
-		addLife();
-		}
+			if (collisionDetect > 10){
+				addLife();
+			}
 		}
 
 		else if (r == 9){
-		initPowerup();
-		drawPowerup(2F);
-		if (collisionDetect > 10){
-		STRIKER_WIDTH = STRIKER_WIDTH - 5;
-		}
+			initPowerup();
+			drawPowerup(2F);
+			if (collisionDetect > 10){
+				STRIKER_WIDTH = STRIKER_WIDTH - 5;
+			}
 		}
 
 		else if (r == 10){

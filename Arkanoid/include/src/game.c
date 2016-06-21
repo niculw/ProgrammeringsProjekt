@@ -20,7 +20,9 @@ void initControl( struct controlData * ctrlData ){
 	(*ctrlData).level = 1;
 	(*ctrlData).blockCount = 0;
 	(*ctrlData).playerLife = 3;
+	
 	printLife( ctrlData );
+	
 }
 
 void printControlData( struct controlData * ctrlData ){
@@ -37,7 +39,6 @@ void game() {
 	short strikerPosition = STRIKER_START_POSITION;		/// vi starter på midsten af skærmen
 	char oldkey = 0 , newkey;
 	char blocks[25][22];
-	char videoBuffer[5][6];
 	struct BallPos ball;
 	struct block b[NUM_BLOCKS];
 	struct controlData ctrlData;
@@ -51,10 +52,9 @@ void game() {
 	initLevel( blocks , &ctrlData );
 	printBlocks( blocks, &ctrlData );
 	printControlData( &ctrlData );
-	initVideoBuffer( videoBuffer );
-	LEDsetString( videoBuffer, 1 );
+	initVideoBuffer( &ctrlData );
 	do {
-		LEDupdate( videoBuffer );
+//		LEDupdate( &ctrlData );
 		if ( halfMilisec >= 64 ) {
 			gotoxy(10,62);
 			printf("%4d", halfMilisec );

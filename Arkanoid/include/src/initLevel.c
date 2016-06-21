@@ -5,6 +5,7 @@
 #include "defines.h"
 #include "initLevel.h"
 #include "game.h"
+#include "LED.h"
 
 void drawBorder( int style ){ 
 	int x, y, i;
@@ -118,8 +119,9 @@ void removeBlockLife( char * block, struct controlData * ctrlData ) {
 			*block &= 0xF9;									// 1111 1001
 			*block |= x;
 		}
+		LEDsetString( ctrlData );
+		printControlData( ctrlData );
 	}
-	printControlData( ctrlData );
 }
 
 void updateBlock( char * block , unsigned char i, unsigned char j, struct controlData * ctrlData ){
