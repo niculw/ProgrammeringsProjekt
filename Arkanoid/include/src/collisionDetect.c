@@ -23,7 +23,7 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 	} else if ( ballY <= 2) {							// window top hit
 		return 2;
 	} else if ( ballY >= RESOLUTION_Y - 2 ) {			// possable stikrer hit
-		if ( ballX>= strikerPos && ballX <= strikerPos + ( STRIKER_WIDTH / 5 ) - 1 ){
+		if ( ballX >= strikerPos && ballX <= strikerPos + 2 ){
 			return 3;										// hit left 
 		} else if ( ballX > strikerPos + 2
 					&& ballX <= strikerPos + 5) {
@@ -43,7 +43,7 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 			initBall( ball );
 			return -1;										// striker not hit
 		}
-	} else if ( ( ballY ) < 48 ){						// check if ball is inside block array
+	} else if ( ( ballY ) < 49 ){						// check if ball is inside block array
 		if ((*ball).yV > 0 ) {												// yV positiv
 			if ( (*ball).xV > 0 ) {											// xV og yV er positive
 				/*	gotoxy(175,debug);

@@ -32,7 +32,7 @@ void printControlData( struct controlData * ctrlData ){
 	printf("Level: %2d", (*ctrlData).level);
 } 
 void game() {
-	short k = 0, level = 1;
+	short k = 0, m = 0;
 	short strikerPosition = STRIKER_START_POSITION;		/// vi starter på midsten af skærmen
 	char oldkey = 0 , newkey;
 	char blocks[25][22];
@@ -46,37 +46,56 @@ void game() {
 	initStriker();
 	initControl( &ctrlData );
 	initBall( &ball );
-//	initLife( &life );
-	initLevel( blocks , &ctrlData);
+	initLevel( blocks , &ctrlData );
 	printBlocks( blocks, &ctrlData );
-//	initLevels(b, level);
+	printControlData( &ctrlData );
 	do {
 		if ( halfMilisec >= 64 ) {
+			gotoxy(10,62);
+			printf("%5d", halfMilisec );
 			newkey = readKey();
-			if( 0 != newkey ) {								// hvis vi har trykket på en knap						
-				if ( 1 == newkey && strikerPosition < RESOLUTION_X - STRIKER_WIDTH ){
-				///// right key pressed
-					strikerPosition++;
-				} else if ( 4 == newkey && strikerPosition > 2 ) {
-				///// left key pressed
-					strikerPosition--;
-				} else if ( 2 == newkey ) {
-					ball.ballStarted = 1;					
+			if ( m == 0){
+				if( 0 != newkey ) {								// hvis vi har trykket på en knap						
+					if ( 1 == newkey && strikerPosition < RESOLUTION_X - STRIKER_WIDTH ){
+					///// right key pressed
+						strikerPosition++;
+					} else if ( 4 == newkey && strikerPosition > 2 ) {
+					///// left key pressed
+						strikerPosition--;
+					} else if ( 2 == newkey ) {
+						ball.ballStarted = 1;					
+					}
+					if ( ball.ballStarted == 0 ) {
+						drawBall( &ball , strikerPosition);		//// bolden følger strikerens position
+					}
+					drawStriker( strikerPosition );
 				}
-				if ( ball.ballStarted == 0 ) {
-					drawBall( &ball , strikerPosition);		//// bolden følger strikerens position
-				}
-				drawStriker( strikerPosition );
+				m = 0;
+			} else {
+				m++;
 			}
 			if ( 0 == k ) {
 				drawBall( &ball , strikerPosition );		//// opdater bolden og læg vektor til
 				////////// regn ny vektor hvis der er en kollision
 				angleCalculation( &ball , collisionDetect( &ball, strikerPosition , blocks, &ctrlData ) );
-				printControlData( &ctrlData );
+				if ( ctrlData.blockCount == 0 && ball.ballStarted == 1){		// time for next level
+					ball.ballStarted = 0;
+					despawn( &ball );
+					drawBall( &ball , strikerPosition );
+					if ( ctrlData.level < 3 ) {			// we  only hae 3 levels!
+						ctrlData.level++;
+						initLevel( blocks , &ctrlData);
+						printBlocks( blocks, &ctrlData );
+					} else {							// end of level 3
+						
+					}
+				}
 				k = 0;
 			} else {
 				k++;
 			}
+			gotoxy(10,63);
+			printf("%5d", halfMilisec );
 			halfMilisec = 0;
 	    }
 	} while ( 1 != 2 );

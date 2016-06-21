@@ -7,7 +7,9 @@ struct controlData{
 	unsigned int blockCount;
 	unsigned char playerLife;
 };
+
 void initControl( struct controlData * ctrlData );
+void printControlData( struct controlData * ctrlData );
 void game();
 
 #endif
