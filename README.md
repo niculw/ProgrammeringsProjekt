@@ -6,7 +6,6 @@ Bugs:
 - window corner collision
 - remove old solid blocks when entering new levels
 
-
 Missing functions:
 - Highscore 
 - Powerups
@@ -14,6 +13,7 @@ Missing functions:
 
 Fixed:
 - menu select error
+- Moved levels to rom
 
 Added:
 - Next level og restart level
