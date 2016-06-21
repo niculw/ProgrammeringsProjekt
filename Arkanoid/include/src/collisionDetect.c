@@ -57,7 +57,7 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 							updateBlock( &blocks[ ballYArray + 1 ][ ballXArray ], ballYArray + 1 , ballXArray, ctrlData );
 							return 8;										// vend 180 grader
 						} else if ( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 == 0x01 ) {		// der er kun en aktiv blok til højre for blokken
-							updateBlock( &blocks[ ballYArray ][ ballXArray +1 ], ballYArray , ballXArray+1, ctrlData );
+							updateBlock( &blocks[ ballYArray ][ ballXArray + 1 ], ballYArray , ballXArray + 1, ctrlData );
 							return 1;
 						} else if ( blocks[ ballYArray + 1 ][ ballXArray ] & 0x01 == 0x01){ // der er kun en aktiv blok under bolden
 							updateBlock( &blocks[ ballYArray + 1 ][ ballXArray ], ballYArray + 1 , ballXArray, ctrlData );
@@ -154,7 +154,7 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 							updateBlock( &blocks[ ballYArray - 1 ][ ballXArray ], ballYArray - 1 , ballXArray, ctrlData );
 							return 2;
 						} else if ( blocks[ ballYArray - 1 ][ ballXArray + 1 ] & 0x01 == 0x01 ){
-							updateBlock( &blocks[ ballYArray - 1 ][ ballXArray - 1 ], ballYArray - 1 , ballXArray - 1, ctrlData );
+							updateBlock( &blocks[ ballYArray - 1 ][ ballXArray + 1 ], ballYArray - 1 , ballXArray + 1, ctrlData );
 							return 8;
 						} else {
 						/*	gotoxy(175,debug);

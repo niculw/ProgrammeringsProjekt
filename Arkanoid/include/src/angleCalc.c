@@ -58,39 +58,53 @@ void angleCalculation( struct BallPos * ball , int collision ){
 		case 3 :								/// left striker hit
 		//	(*ball).xV = (*ball).xV ;
 		//	(*ball).yV = - (*ball).yV;
-			if ( 0 <= (*ball).xV >> 14 ) {		// bolden kommer fra venstre eller oppefra
-				rotate( ball , 320 );			// 225 grader
+			if ( 0 <= (*ball).xV >> 14 ) {		// bolden kommer fra venstre
+		//		rotate( ball , 320 );			// 225 grader
+				(*ball).xV = -8192;
+				(*ball).yV = -14188;
 			} else {							// bolden kommer fra højre
-				rotate( ball , 64 );			// 45 grader
+		//		rotate( ball , 64 );			// 45 grader
+				(*ball).xV = -15825;
+				(*ball).yV = -4240;
 			}
 			break;
 		case 4 :								/// left middle striker hit
 	//		(*ball).yV = - (*ball).yV;
-			if ( 0 <= (*ball).xV >> 14 ) {
-				rotate( ball , 288 );			// 202,5 grader
-			} else {
-				rotate( ball , 128 );			// 90 grader
+			if ( 0 <= (*ball).xV >> 14 ) {		// fra venstre
+		//		rotate( ball , 288 );			// 202,5 grader
+				(*ball).xV = -4240;
+				(*ball).yV = -15825;
+			} else {							// fra højre
+		//		rotate( ball , 128 );			// 90 grader
+				(*ball).xV = -8192;
+				(*ball).yV = -14188;
 			}
-
 			break;
-		case 5 :								/// middle striker hit
+		case 5 :								/// center striker hit
 			(*ball).yV = - (*ball).yV;			// 90 grader
 			break;
 		case 6 :								/// right middle striker hit
 	//		(*ball).yV = - (*ball).yV;
-			if ( 0 <= (*ball).xV >> 14 ) {
-				rotate( ball , 320 );			// 225 grader
-			} else {
-				rotate( ball , 192 );			// 135 grader
+			if ( 0 <= (*ball).xV >> 14 ) {		// fra venstre
+		//		rotate( ball , 320 );			// 225 grader
+				(*ball).xV = 14188;
+				(*ball).yV = -8192;
+			} else {							// fra højre
+		//		rotate( ball , 192 );			// 135 grader
+				(*ball).xV = 4240;
+				(*ball).yV = -15825;
 			}
-
 			break;
 		case 7 :								/// right striker hit
 	//		(*ball).yV = - (*ball).yV;
-			if ( 0 <= (*ball).xV >> 14 ) {
-				rotate( ball , 384 );			// 270 grader
-			} else {
-				rotate( ball , 224 );			// 157.5 grader
+			if ( 0 <= (*ball).xV >> 14 ) {		// fra venstre
+		//		rotate( ball , 384 );			// 270 grader
+				(*ball).xV = 15825;
+				(*ball).yV = -4240;
+			} else {							// fra højre
+		//		rotate( ball , 224 );			// 157.5 grader
+				(*ball).xV = 8192;				// 60 grader
+				(*ball).yV = -14188;
 			}
 			break;
 		case 8 :

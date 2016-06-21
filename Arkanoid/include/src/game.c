@@ -48,11 +48,11 @@ void game() {
 	initBall( &ball );
 	initLevel( blocks , &ctrlData );
 	printBlocks( blocks, &ctrlData );
-	printControlData( &ctrlData );
+	printControlData( & ctrlData );
 	do {
 		if ( halfMilisec >= 64 ) {
 			gotoxy(10,62);
-			printf("%5d", halfMilisec );
+			printf("%4d", halfMilisec );
 			newkey = readKey();
 			if ( m == 0){
 				if( 0 != newkey ) {								// hvis vi har trykket på en knap						
@@ -94,8 +94,8 @@ void game() {
 			} else {
 				k++;
 			}
-			gotoxy(10,63);
-			printf("%5d", halfMilisec );
+			gotoxy(10,64);
+			printf("%4d", halfMilisec );
 			halfMilisec = 0;
 	    }
 	} while ( 1 != 2 );
