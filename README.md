@@ -1,7 +1,7 @@
 # ProgrammeringsProjekt
 
 Bugs:
-- 
+Ingen pt -,-
 
 
 Missing functions:
