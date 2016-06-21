@@ -4,16 +4,19 @@ Bugs:
 - striker collision angle reflect
 - border/block collision
 - window corner collision
+- remove old solid blocks when entering new levels
+
 
 Missing functions:
-- Next level og restart level
-- new levels
 - Highscore 
 - Powerups
+- LED display for life or points
 
 Fixed:
 - menu select error
 
 Added:
+- Next level og restart level
+- new levels
 - Points
 - block life
