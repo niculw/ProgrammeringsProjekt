@@ -85,7 +85,7 @@ void printHelp(char sel){
 		gotoxy( XPOS, YPOS ); 
 		printf("############################################################################################"); gotoxy( XPOS, YPOS + 1 );
 		printf("############################################################################################");	gotoxy( XPOS, YPOS + 2 );
-		printf("##                                 (Press PF6 to return)                                  ##"); gotoxy( XPOS, YPOS + 3 );
+		printf("##                                 (Press SW2 to return)                                  ##"); gotoxy( XPOS, YPOS + 3 );
 		printf("##    PF7 - move right                                                                    ##"); gotoxy( XPOS, YPOS + 4 );
 		printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 5 );
 		printf("##    PF6 - start ball                                                                    ##"); gotoxy( XPOS, YPOS + 6 );
@@ -100,7 +100,7 @@ void printHelp(char sel){
 	gotoxy( XPOS, YPOS ); 
 		printf("############################################################################################"); gotoxy( XPOS, YPOS + 1 );
 		printf("############################################################################################");	gotoxy( XPOS, YPOS + 2 );
-		printf("##                                Press PF6 to return                                     ##"); gotoxy( XPOS, YPOS + 3 );
+		printf("##                                Press SW2 to return                                     ##"); gotoxy( XPOS, YPOS + 3 );
 		printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 4 );
 		printf("##    @ - Extra life                                                                      ##"); gotoxy( XPOS, YPOS + 5 );
 		printf("##                                                                                        ##"); gotoxy( XPOS, YPOS + 6 );
