@@ -3,7 +3,6 @@
 Bugs:
 - border/block collision
 - window corner collision
-- remove old solid blocks when entering new levels
 
 Missing functions:
 - Highscore 
@@ -14,6 +13,7 @@ Fixed:
 - menu select error
 - Moved levels to rom
 - Striker collision angle reflect
+- remove old solid blocks when entering new levels
 
 Added:
 - Next level og restart level
