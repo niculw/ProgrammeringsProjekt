@@ -12,6 +12,5 @@ void removeBlockLife( char * block, struct controlData * ctrlData );
 void updateBlock( char * block , unsigned char i, unsigned char j, struct controlData * ctrlData);
 void initLevel( char block[25][22] , struct controlData * ctrlData );
 void printBlocks( char block[25][22], struct controlData * ctrlData );
-void level1( char block[25][22] );
-
+void clearLevel(  );
 #endif

@@ -3,9 +3,10 @@
 
 
 void LEDinit();
-void LEDsetString( char string[] );
+void initVideoBuffer( char videoBuffer[5][6] );
+void LEDsetString( char videoBuffer[5][6], unsigned int points );
 void mellemled( char string[], int n);
-void LEDupdate();
+void LEDupdate( char videoBuffer[5][6] );
 void refreshDisplay();
 
 #endif 

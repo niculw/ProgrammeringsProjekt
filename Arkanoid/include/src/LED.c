@@ -1,45 +1,56 @@
 #include <eZ8.h>             // special encore constants, macros and flash routines
 #include "charset.h"
 
-int videoBuffer[5][6];
-int timeForRefresh = 0;
+//int timeForRefresh = 0;
 /*
 #pragma interrupt
 void refreshDisplay() {
 	timeForRefresh = 1;
 }
 */
-/*
+
 void LEDinit(){
 	/////////////////////////////////////////////////// LED config
 	PEDD = 0x00;                                     // 1 for input 0 for output
 	PGDD = 0x00;
 	/////////////////////////////////////////////////// interrupt setup
 	DI();							               	 // disable interupt
-	SET_VECTOR(TIMER0, refreshDisplay);
-	IRQ0ENH &= 0x00;		// low prioitet
-	IRQ0ENL |= 0x20;		// low prioitet
+//	SET_VECTOR(TIMER0, refreshDisplay);
+//	IRQ0ENH &= 0x00;		// low prioitet
+//	IRQ0ENL |= 0x20;		// low prioitet
 	//////////////////////////////////////////////////// timer 0 config
-	T0RH = 0x24;			// set reload high value 
-	T0RL = 0x00;			// set reload low value
-	T0H = 0x00;				// timer byte high = 00000000
-	T0L = 0x01;				// timer byte low = 00000001
-	T0CTL = 0x81;			// 1000 0001 // enable and continious mode
+//	T0RH = 0x24;			// set reload high value 
+//	T0RL = 0x00;			// set reload low value
+//	T0H = 0x00;				// timer byte high = 00000000
+//	T0L = 0x01;				// timer byte low = 00000001
+//	T0CTL = 0x81;			// 1000 0001 // enable and continious mode
 	EI();
 }
-*/
-void LEDsetString( char string[] ){
-	int i,j;
-	for ( i = 0; i < 5; i++){
-		for ( j = 0; j < 5; j++){
-			videoBuffer[i][j] = character_data[ string[i] - 32 ][ j ];
+
+
+void initVideoBuffer( char videoBuffer[5][6] ){
+	char i,j;
+	for (i = 0; i < 5; i++){
+		for (j = 0; j < 5; j++){
+			videoBuffer[i][j] = character_data[ 48 - 32 ][ j ];
 		}
 		videoBuffer[i][5] = 0;
 	}
 }
 
+void LEDsetString(char videoBuffer[5][6],  unsigned int points ){
+	int i,j;
+	for ( i = 0; i < 5; i++){
+		for ( j = 0; j < 5; j++){
+			videoBuffer[i][j] = character_data[ (points % 10) + 16 ][ j ];
+		}
+		points /= 10;
+		videoBuffer[i][5] = 0;
+	}
+}
+
 void mellemled( char string[], int n) {
-	int i,j = n;
+/*	int i,j = n;
 	static int coun = 0, ch = 0, inde = 0;
 	char str[] = "     ";
 	coun++;
@@ -65,19 +76,19 @@ void mellemled( char string[], int n) {
 			}
 			LEDsetString( str );	/// skriv til videobuffer
 		}
-	}
+	}*/
 }
 
-void LEDupdate(){
+void LEDupdate( char videoBuffer[5][6] ){
 	int i,j;
 	static int karakter = 0, cl = 4, count = 0, index = 0;
 	static char col = 0xFE;									///// 1111 1110
 	//	printf("TFR: %d \n",timeForRefresh);
-	count++;
+/*	count++;
 	if (count == 500) {
 		count = 0;
 		if (index < 6){
-		 	index++;
+		 //	index++;
 		} else {
 			index = 0;
 	//		for (i = 0; i < 4; i++){
@@ -86,11 +97,11 @@ void LEDupdate(){
 	//			}
 	//		}
 	//		for (i = 0; i < 5; i++){
-	//			videoBuffer[4][i] = 			character_data['a' - 32][i];
+	//			videoBuffer[4][i] = character_data['a' - 32][i];
 	//		}
 		}
-	}
-	if ( 1 == timeForRefresh ) {
+	}*/
+//	if ( 1 == timeForRefresh ) {
 		PEOUT &= col;									///// tænder for den kolonne vi vil vise
 		PGOUT |= videoBuffer[ karakter ][ cl + index ];			///// tænder for de dioder der skal vises på den kolonne
 		switch (karakter) {								///// vælger hvilket display
@@ -114,40 +125,30 @@ void LEDupdate(){
 		PEOUT |= 0x1F;									///// slukker alle colonner, 
 		PGOUT &= 0x80;									///// slukker alle row data
 
-		
-		//	printf("Refresh=  %d\n ",timeForRefresh);
 				/////////// Next step
 		if (karakter < 4){
 				karakter++;
-			} else { 
+		} else { 
 			karakter = 0;
 			if ( cl > 0){
 				col |= 0x1F;
 				switch ( cl ) {	
-					case 4 : 
-						col &= 0xFD;
+					case 4 : col &= 0xFD;
 						break;
-					case 3 :
-						col &= 0xFB;
+					case 3 : col &= 0xFB;
 						break;
-					case 2 : 
-						col &= 0xF7;
+					case 2 : col &= 0xF7;
 						break;
-					case 1 : 
-						col &= 0xEF;
+					case 1 : col &= 0xEF;
 						break;
-					case 0 : 
-						col &= 0xFE;
+					case 0 : col &= 0xFE;
 						break;
-				}
-				cl--;
-				}
-			else {
+				} cl--;
+			} else {
 				col = 0xFE;
 				cl = 4;
-				
 			}
 		}
-		timeForRefresh = 0;
-	} 
+//		timeForRefresh = 0;
+//	} 
 }

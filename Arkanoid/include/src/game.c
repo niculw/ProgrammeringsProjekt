@@ -11,6 +11,7 @@
 #include "io.h"
 #include "life.h"
 #include "block.h"
+#include "LED.h"
 
 extern int halfMilisec ;
 
@@ -36,10 +37,11 @@ void game() {
 	short strikerPosition = STRIKER_START_POSITION;		/// vi starter på midsten af skærmen
 	char oldkey = 0 , newkey;
 	char blocks[25][22];
+	char videoBuffer[5][6];
 	struct BallPos ball;
-//	struct lives life;
 	struct block b[NUM_BLOCKS];
 	struct controlData ctrlData;
+	LEDinit();
 	color(1,0);
 	clrscr();
 	drawBorder(2);
@@ -48,13 +50,16 @@ void game() {
 	initBall( &ball );
 	initLevel( blocks , &ctrlData );
 	printBlocks( blocks, &ctrlData );
-	printControlData( & ctrlData );
+	printControlData( &ctrlData );
+	initVideoBuffer( videoBuffer );
+	LEDsetString( videoBuffer, 1 );
 	do {
+		LEDupdate( videoBuffer );
 		if ( halfMilisec >= 64 ) {
 			gotoxy(10,62);
 			printf("%4d", halfMilisec );
 			newkey = readKey();
-			if ( m == 0){
+			if ( m == 0 ){
 				if( 0 != newkey ) {								// hvis vi har trykket på en knap						
 					if ( 1 == newkey && strikerPosition < RESOLUTION_X - STRIKER_WIDTH ){
 					///// right key pressed
@@ -63,7 +68,15 @@ void game() {
 					///// left key pressed
 						strikerPosition--;
 					} else if ( 2 == newkey ) {
-						ball.ballStarted = 1;					
+						if ( ctrlData.playerLife > 0 ){
+							ball.ballStarted = 1;	
+						} else {
+							clearLevel();
+							initControl( &ctrlData );
+							initLevel( blocks , &ctrlData);
+							printControlData( & ctrlData );
+							printBlocks( blocks, &ctrlData );
+						}
 					}
 					if ( ball.ballStarted == 0 ) {
 						drawBall( &ball , strikerPosition);		//// bolden følger strikerens position
@@ -83,6 +96,7 @@ void game() {
 					despawn( &ball );
 					drawBall( &ball , strikerPosition );
 					if ( ctrlData.level < 3 ) {			// we  only hae 3 levels!
+						clearLevel();
 						ctrlData.level++;
 						initLevel( blocks , &ctrlData);
 						printBlocks( blocks, &ctrlData );

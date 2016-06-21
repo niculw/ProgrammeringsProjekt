@@ -58,7 +58,7 @@ void angleCalculation( struct BallPos * ball , int collision ){
 		case 3 :								/// left striker hit
 		//	(*ball).xV = (*ball).xV ;
 		//	(*ball).yV = - (*ball).yV;
-			if ( 0 <= (*ball).xV >> 14 ) {		// bolden kommer fra venstre
+			if ( 0 <= (*ball).xV ) {		// bolden kommer fra venstre
 		//		rotate( ball , 320 );			// 225 grader
 				(*ball).xV = -8192;
 				(*ball).yV = -14188;
@@ -70,7 +70,7 @@ void angleCalculation( struct BallPos * ball , int collision ){
 			break;
 		case 4 :								/// left middle striker hit
 	//		(*ball).yV = - (*ball).yV;
-			if ( 0 <= (*ball).xV >> 14 ) {		// fra venstre
+			if ( 0 <= (*ball).xV ) {		// fra venstre
 		//		rotate( ball , 288 );			// 202,5 grader
 				(*ball).xV = -4240;
 				(*ball).yV = -15825;
@@ -85,7 +85,7 @@ void angleCalculation( struct BallPos * ball , int collision ){
 			break;
 		case 6 :								/// right middle striker hit
 	//		(*ball).yV = - (*ball).yV;
-			if ( 0 <= (*ball).xV >> 14 ) {		// fra venstre
+			if ( 0 <= (*ball).xV ) {		// fra venstre
 		//		rotate( ball , 320 );			// 225 grader
 				(*ball).xV = 14188;
 				(*ball).yV = -8192;
@@ -97,7 +97,7 @@ void angleCalculation( struct BallPos * ball , int collision ){
 			break;
 		case 7 :								/// right striker hit
 	//		(*ball).yV = - (*ball).yV;
-			if ( 0 <= (*ball).xV >> 14 ) {		// fra venstre
+			if ( 0 <= (*ball).xV ) {		// fra venstre
 		//		rotate( ball , 384 );			// 270 grader
 				(*ball).xV = 15825;
 				(*ball).yV = -4240;

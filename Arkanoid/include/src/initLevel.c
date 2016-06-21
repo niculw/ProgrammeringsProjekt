@@ -99,19 +99,18 @@ void printBlocks( char block[25][22], struct controlData * ctrlData ) {
 	}
 }
 
-
 void removeBlockLife( char * block, struct controlData * ctrlData ) {
 	int x;
 	if ((*block & 0x08 ) != 0x08){								/// er blokken indestructible ?
 		if (( *block & 0x06 ) == 0x02 ){							// er det det sidste blok liv der fjernes?
 			*block &= 0xF0;									// fjerner det sidste liv og gør blokken inaktiv
 			(*ctrlData).blockCount--;
-			(*ctrlData).point += 20;
+			(*ctrlData).point += 5;
 		} else {													// mere end et blok liv tilbage
 			if ( *block & 0x06 == 0x04 ){								//
-				(*ctrlData).point += 10;
+				(*ctrlData).point += 2;
 			} else {
-				(*ctrlData).point += 5;
+				(*ctrlData).point += 1;
 			}
 			x = ( *block & 0x06 ) >> 1;
 			x--;
@@ -140,6 +139,16 @@ void updateBlock( char * block , unsigned char i, unsigned char j, struct contro
 		gotoxy( ( j << 3 ) - 6 , (i << 1) + 1 );
 		for (k = 0; k < 8; k++){
 			printf("%c", health);							//// farver den nederste del af blokken
+		}
+	}
+}
+
+void clearLevel(  ){
+	unsigned char i, j;
+	for (i = 2; i < 50; i++){
+	gotoxy(2,i);
+ 		for (j = 2; j < 162; j++){
+			printf(" ");
 		}
 	}
 }
