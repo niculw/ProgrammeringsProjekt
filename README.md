@@ -6,8 +6,8 @@ Ingen pt -,-
 
 Missing functions:
 - Highscore 
-- Powerups
-- LED display for life or points
+- Powerups ( might not be happening ) 
+- LED display for life or points ( needs more testing )
 
 Fixed:
 - menu select error
