@@ -32,7 +32,7 @@ void initVideoBuffer( struct controlData * ctrlData ){
 
 void LEDsetString(struct controlData * ctrlData ){
 	int i,j, n = (*ctrlData).point;
-	for ( i = 0; i < 4; i++){
+	for ( i = 3; i >= 0; i--){
 		for ( j = 0; j < 5; j++){
 			(*ctrlData).videoBuffer[i][j] = character_data[ (n % 10) + 16 ][ j ];
 		}

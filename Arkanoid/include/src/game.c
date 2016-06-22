@@ -54,7 +54,7 @@ void game() {
 	printControlData( &ctrlData );
 	initVideoBuffer( &ctrlData );
 	do {
-//		LEDupdate( &ctrlData );
+		LEDupdate( &ctrlData );
 		if ( halfMilisec >= 64 ) {
 			gotoxy(10,62);
 			printf("%4d", halfMilisec );
@@ -73,6 +73,7 @@ void game() {
 						} else {
 							clearLevel();
 							initControl( &ctrlData );
+							LEDsetString( &ctrlData );
 							initLevel( blocks , &ctrlData);
 							printControlData( & ctrlData );
 							printBlocks( blocks, &ctrlData );
@@ -91,16 +92,16 @@ void game() {
 				drawBall( &ball , strikerPosition );		//// opdater bolden og læg vektor til
 				////////// regn ny vektor hvis der er en kollision
 				angleCalculation( &ball , collisionDetect( &ball, strikerPosition , blocks, &ctrlData ) );
-				if ( ctrlData.blockCount == 0 && ball.ballStarted == 1){		// time for next level
+				if ( ctrlData.blockCount == 0 && ball.ballStarted == 1){	// time for next level
 					ball.ballStarted = 0;
 					despawn( &ball );
 					drawBall( &ball , strikerPosition );
-					if ( ctrlData.level < 3 ) {			// we  only hae 3 levels!
+					if ( ctrlData.level < 4 ) {			// we  only hae 4 levels!
 						clearLevel();
 						ctrlData.level++;
 						initLevel( blocks , &ctrlData);
 						printBlocks( blocks, &ctrlData );
-					} else {							// end of level 3
+					} else {							// end of level 4
 						
 					}
 				}
