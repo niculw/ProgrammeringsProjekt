@@ -26,6 +26,10 @@ int collisionDetect( struct BallPos * ball, unsigned char strikerPos , char bloc
 				updateBlock( &blocks[ ballYArray + 1 ][ ballXArray ], ballYArray + 1 , ballXArray, ctrlData );
 				return 8;
 			} else return 1;
+		} else if ( ballY >= RESOLUTION_Y - 2 ) {		// ensures collision between window frame and striker works properly
+			if ( strikerPos == ballX || (strikerPos + 14) == ballX  ){
+				return 8;
+			} else return 1;
 		} else return 1;
 	} else if ( ballY <= 2) {							// window top hit
 		if ( (*ball).xV < 0 && (( ballXOffset - 1 ) >> 3 ) != ballXArray ){		// ball is going left and near side block
