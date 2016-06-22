@@ -67,12 +67,11 @@ void game() {
 						if ( ctrlData.playerLife > 0 ){
 							ball.ballStarted = 1;	
 						} else {
-							clearLevel();
-							initControl( &ctrlData );
-							LEDsetString( &ctrlData );
-							initLevel( blocks , &ctrlData);
-							printControlData( & ctrlData );
-							printBlocks( blocks, &ctrlData );
+							gameStarted = 0;
+							clearLevel();				// only for visuel effects
+							clrscr();
+							initMenu();	
+							menuSel( 1 );
 						}
 					}
 					if ( ball.ballStarted == 0 ) {
@@ -103,6 +102,7 @@ void game() {
 						printWin( &ctrlData );
 						if ( 2 == newkey ){
 							gameStarted = 0;
+							clearLevel();				// only for visuel effects
 							clrscr();
 							initMenu();	
 							menuSel( 1 );
