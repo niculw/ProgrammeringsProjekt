@@ -64,9 +64,9 @@ void game() {
 					///// left key pressed
 						strikerPosition--;
 					} else if ( 2 == newkey ) {
-						if ( ctrlData.playerLife > 0 ){
+						if ( ctrlData.playerLife > 0 ){	// start the ball
 							ball.ballStarted = 1;	
-						} else {
+						} else {						
 							gameStarted = 0;
 							clearLevel();				// only for visuel effects
 							clrscr();
@@ -74,7 +74,7 @@ void game() {
 							menuSel( 1 );
 						}
 					}
-					if ( ball.ballStarted == 0 ) {
+					if ( ball.ballStarted == 0 && ctrlData.playerLife > 0 ) {
 						drawBall( &ball , strikerPosition);		//// bolden følger strikerens position
 					}
 					drawStriker( strikerPosition );
@@ -83,7 +83,7 @@ void game() {
 			} else {
 				m++;
 			}
-			if ( 0 == k ) {									// offset for ball speed, higher == slower
+			if ( 0 == k && gameStarted == 1) {									// offset for ball speed, higher == slower
 				drawBall( &ball , strikerPosition );		//// opdater bolden og læg vektor til
 				////////// regn ny vektor hvis der er en kollision
 				angleCalculation( &ball , collisionDetect( &ball, strikerPosition , blocks, &ctrlData ) );
