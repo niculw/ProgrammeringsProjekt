@@ -10,8 +10,9 @@
 #include "angleCalc.h"
 #include "io.h"
 #include "life.h"
-#include "block.h"
 #include "LED.h"
+#include "menu.h"
+
 
 extern int halfMilisec ;
 
@@ -35,31 +36,26 @@ void printControlData( struct controlData * ctrlData ){
 	printf("Level: %2d", (*ctrlData).level);
 } 
 void game() {
-	short k = 0, m = 0;
-	short strikerPosition = STRIKER_START_POSITION;		/// vi starter på midsten af skærmen
-	char oldkey = 0 , newkey;
+	unsigned char k = 0, m = 0, strikerPosition = STRIKER_START_POSITION;		/// vi starter på midsten af skærmen
+	unsigned char oldkey = 0, newkey, gameStarted = 1;
 	char blocks[25][22];
 	struct BallPos ball;
-	struct block b[NUM_BLOCKS];
 	struct controlData ctrlData;
 	LEDinit();
-	color(1,0);
 	clrscr();
 	drawBorder(2);
 	initStriker();
 	initControl( &ctrlData );
 	initBall( &ball );
-	initLevel( blocks , &ctrlData );
+	initLevel( blocks, &ctrlData );
 	printBlocks( blocks, &ctrlData );
 	printControlData( &ctrlData );
 	initVideoBuffer( &ctrlData );
 	do {
 		LEDupdate( &ctrlData );
-		if ( halfMilisec >= 64 ) {
-			gotoxy(10,62);
-			printf("%4d", halfMilisec );
+		if ( halfMilisec >= 64 ) {								// general timing speed, depends on code speed
 			newkey = readKey();
-			if ( m == 0 ){
+			if ( m == 0 ){										// offset for striker speed, higher == slower striker
 				if( 0 != newkey ) {								// hvis vi har trykket på en knap						
 					if ( 1 == newkey && strikerPosition < RESOLUTION_X - STRIKER_WIDTH ){
 					///// right key pressed
@@ -88,7 +84,7 @@ void game() {
 			} else {
 				m++;
 			}
-			if ( 0 == k ) {
+			if ( 0 == k ) {									// offset for ball speed, higher == slower
 				drawBall( &ball , strikerPosition );		//// opdater bolden og læg vektor til
 				////////// regn ny vektor hvis der er en kollision
 				angleCalculation( &ball , collisionDetect( &ball, strikerPosition , blocks, &ctrlData ) );
@@ -96,22 +92,28 @@ void game() {
 					ball.ballStarted = 0;
 					despawn( &ball );
 					drawBall( &ball , strikerPosition );
-					if ( ctrlData.level < 4 ) {			// we  only hae 4 levels!
+					if ( ctrlData.level < 4 ) {			// we only hae 4 levels!
 						clearLevel();
+						addLife( &ctrlData );
 						ctrlData.level++;
-						initLevel( blocks , &ctrlData);
+						initLevel( blocks , &ctrlData );
 						printBlocks( blocks, &ctrlData );
+						printControlData( & ctrlData );
 					} else {							// end of level 4
-						
+						printWin( &ctrlData );
+						if ( 2 == newkey ){
+							gameStarted = 0;
+							clrscr();
+							initMenu();	
+							menuSel( 1 );
+						}
 					}
 				}
 				k = 0;
 			} else {
 				k++;
 			}
-			gotoxy(10,64);
-			printf("%4d", halfMilisec );
 			halfMilisec = 0;
 	    }
-	} while ( 1 != 2 );
+	} while ( 1 == gameStarted );
 }

@@ -2,7 +2,7 @@
 #include <sio.h>             // special encore serial i/o routines
 #define ESC 0x1B
 
-void fgcolor(int foreground) {
+void fgcolor( unsigned char foreground) {
 /*  Value      foreground     Value     foreground
     ------------------------------------------------
       0        Black            8       Dark Gray
@@ -14,7 +14,7 @@ void fgcolor(int foreground) {
       6        Cyan            14       Light Cyan
       7        Light Gray      15       White
 */
-  int type = 22;             // normal text
+  unsigned char type = 22;             // normal text
 	if (foreground > 7) {
 	  type = 1;                // bold text
 		foreground -= 8;
@@ -45,9 +45,9 @@ void bgcolor(int background) {
   printf("%c[%dm", ESC, background+40);
 }
 
-void color(int foreground, int background) {
+void color(unsigned char foreground, unsigned char background) {
 // combination of fgcolor() and bgcolor() - uses less bandwidth
-  int type = 22;             // normal text
+  unsigned char type = 22;             // normal text
 	if (foreground > 7) {
 	  type = 1;                // bold text
 		foreground -= 8;
@@ -68,23 +68,23 @@ void clreol(){
 	printf("%c[K",ESC);
 }
 
-void gotoxy(int x, int y) {
+void gotoxy(unsigned char x, unsigned char y) {
 	printf("%c[%d;%dH", ESC, y, x);
 }
 
-void goDown( short c ) {
+void goDown( unsigned char c ) {
 	printf("%c[%dB", ESC ,c);
 }
 
-void goUp( short c ) {
+void goUp( unsigned char c ) {
 	printf("%c[%dA", ESC ,c);
 }
 
-void goRight( short c ) {
+void goRight( unsigned char c ) {
 	printf("%c[%dC", ESC ,c);
 }
 
-void goLeft( short c ) {
+void goLeft( unsigned char c ) {
 	printf("%c[%dD", ESC ,c);
 }
 

@@ -14,10 +14,3 @@ void keysetup(){
 	PDDD |= 0x08; 
 }
 
-void ledcontrol( int number ){
-	PEDD = 0x0F;     // 1 for input 0 for output
-	PGDD = 0x00;
-	PGOUT = number;
-	PEOUT |= 0x40;
-	PEOUT &= 0xBF;
-}

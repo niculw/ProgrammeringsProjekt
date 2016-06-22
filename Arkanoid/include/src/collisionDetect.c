@@ -7,17 +7,12 @@
 #include "ansi.h"
 #include "initLevel.h"
 
-int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][22], struct controlData * ctrlData ){
-//	static int debug = 1;
+int collisionDetect( struct BallPos * ball, unsigned char strikerPos , char blocks[25][22], struct controlData * ctrlData ){
 	int ballX = (*ball).x >> 14;
 	int ballY = (*ball).y  >> 14;
 	int ballXOffset = ballX + 6;
 	unsigned char ballXArray = ballXOffset >> 3 ;		// for blok detection, >> 14 for omregning til heltal, og >> 3 for omregning til blok array. da hver blok er 2^3 bred
 	unsigned char ballYArray = ballY >> 1;			// for blok detection, >> 14 for omregning til heltal, og >> 1 for omregning til blok array, da hver blok er 2^1 høj.
-/*	gotoxy(5,62);
-	printf("ball Pos: %2d %2d",ballX, ballY );
-	gotoxy(5,63);
-	printf("ball Array Pos: %2d %2d",ballXArray, ballYArray );*/
 	if ( ballX <= 2 || ballX >= RESOLUTION_X - 1 ){		// window sides hit
 		if ( ballY <= 2 ){								// ensures the corners will reflext proterly instead of bugging outside of borders
 			return 8;
@@ -65,9 +60,6 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 	} else if ( ( ballY ) < 49 ){						// check if ball is inside block array
 		if ((*ball).yV > 0 ) {												// yV positiv
 			if ( (*ball).xV > 0 ) {											// xV og yV er positive
-				/*	gotoxy(175,debug);
-					printf(" y + x +");
-					debug++;*/
 				if ( (( ballXOffset + 1 ) >> 3 ) != ballXArray ) {		// så står der en blok til højre for bolden
 					if ( (( ballY + 1 ) >> 1 ) != ballYArray ) {	// så står der OGSÅ en blok under bolden
 						if ( (( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 ) == 0x01 )
@@ -108,9 +100,6 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 					}
 				}
 			} else {														// xV er negativ, yV positiv
-					/*	gotoxy(175,debug);
-						printf(" y + x -");
-						debug++;*/
 				if ( (( ballXOffset - 1 ) >> 3 ) != ballXArray ) {		// så står der en blok til venstre for bolden
 					if ( (( ballY + 1 ) >> 1 ) != ballYArray ) {		// så står der OGSÅ en blok under bolden
 						if ( (( blocks[ ballYArray ][ ballXArray - 1 ] & 0x01 ) == 0x01 )
@@ -142,9 +131,6 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 					if ( (( ballY + 1 ) >> 1 ) != ballYArray ) {			// så står der en blok under bolden
 						if ( (( blocks[ ballYArray + 1 ][ ballXArray ] & 0x01 ) == 0x01  )){ // er der noget på denne position
 							updateBlock( &blocks[ ballYArray + 1 ][ ballXArray ], ballYArray + 1 , ballXArray, ctrlData );
-						/*	gotoxy(175,debug);
-							printf("HIT U %d %d %d %d nH", ballXArray, ballYArray + 1, ballX , ballY);
-							debug++;*/
 							return 2;										
 						} else {
 							return 0;
@@ -156,9 +142,6 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 			}
 		} else {															// yV er negativ
 			if ( (*ball).xV > 0 ) {									// xV er positiv
-					/*	gotoxy(175,debug);
-						printf(" y - x +");
-						debug++;*/
 				if ( (( ballXOffset + 1 ) >> 3 ) != ballXArray ) {		// så står der en blok til højre for bolden
 					if ( (( ballY - 1 ) >> 1 ) != ballYArray ) {	// så står der OGSÅ en blok over bolden
 						if ( (( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 ) == 0x01 )
@@ -176,9 +159,6 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 							updateBlock( &blocks[ ballYArray - 1 ][ ballXArray + 1 ], ballYArray - 1 , ballXArray + 1, ctrlData );
 							return 8;
 						} else {
-						/*	gotoxy(175,debug);
-							printf("H O ik aktiv");
-							debug++;*/
 							return 0;
 						}
 					} else {											// vi rammer kun en blok til højre for bolden
@@ -186,9 +166,6 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 							updateBlock( &blocks[ ballYArray ][ ballXArray + 1 ], ballYArray , ballXArray + 1, ctrlData );
 							return 1;
 						} else {
-						/*	gotoxy(175,debug);
-							printf("H blok ik aktiv");
-							debug++;*/
 							return 0;
 						}
 					}
@@ -196,29 +173,17 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 					if ( (( ballY - 1 ) >> 1 ) != ballYArray ) {			// så står der en blok over bolden
 						if ( (( blocks[ballYArray - 1 ][ ballXArray ] & 0x01 ) == 0x01  )){ // er der noget på denne position
 							updateBlock( &blocks[ ballYArray - 1 ][ ballXArray ], ballYArray - 1 , ballXArray, ctrlData );
-						/*	gotoxy(175,debug);
-							printf("HIT! O %d %d %d %d nH", ballXArray, ballYArray - 1, ballX , ballY);
-							debug++;*/
 							return 2;										
 						} else {
-						/*	gotoxy(175,debug);
-							printf("O ik aktiv");
-							debug++;*/
 							return 0;
 						}
 					} else {												// vi rammer ingen blokke til højre eller under bolden											
-					/*	gotoxy(175,debug);
-						printf("ingen blok");
-						debug++;*/
 						return 0;
 					}
 				}
 				
 				
 			} else {											// yV og xV er negative
-					/*	gotoxy(175,debug);
-						printf(" y - x -");
-						debug++;*/
 				if ( (( ballXOffset - 1 ) >> 3 ) != ballXArray ) {		// så står der en blok til venstre for bolden
 					if ( ((ballY - 1 ) >> 1 ) != ballYArray ) {			// så står der OGSÅ en blok over bolden
 						if ( (( blocks[ ballYArray ][ ballXArray - 1 ] & 0x01 ) == 0x01 )
@@ -240,8 +205,6 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 						}
 					} else {											// vi rammer kun en blok til venstre for bolden
 						if (( blocks[ ballYArray ][ ballXArray - 1 ] & 0x01 ) == 0x01 ) { // er denne blok aktiv ?
-							/*	gotoxy(40, 62);
-								printf("%d",blocks[ ballYArray ][ ballXArray - 1 ] );*/
 							updateBlock( &blocks[ ballYArray ][ ballXArray - 1 ], ballYArray , ballXArray - 1, ctrlData );
 							return 1;
 						} else {
@@ -251,9 +214,6 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 				} else {													// så står der ingen blok til venstre for bolden
 					if ( (( ballY - 1 ) >> 1 ) != ballYArray ) {	// så står der en blok over bolden
 						if ( (( blocks[ ballYArray - 1 ][ ballXArray ] & 0x01 ) == 0x01  )){ // er der noget på denne position
-						/*	gotoxy(175,debug);
-							printf("HIT O %d %d %d %d nV", ballXArray, ballYArray - 1, ballX, ballY);
-							debug++;*/
 							updateBlock( &blocks[ ballYArray - 1  ][ ballXArray ], ballYArray - 1 , ballXArray, ctrlData );
 							return 2;										
 						} else {

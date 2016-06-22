@@ -3,50 +3,37 @@
 #include "game.h"
 
 void LEDinit(){
-	/////////////////////////////////////////////////// LED config
-	PEDD = 0x00;                                     // 1 for input 0 for output
+	////////////////////////////////////////////////// LED config
+	// 1 for input 0 for output
+	PEDD = 0x00;
 	PGDD = 0x00;
-	/////////////////////////////////////////////////// interrupt setup
-	DI();							               	 // disable interupt
-//	SET_VECTOR(TIMER0, refreshDisplay);
-//	IRQ0ENH &= 0x00;		// low prioitet
-//	IRQ0ENL |= 0x20;		// low prioitet
-	//////////////////////////////////////////////////// timer 0 config
-//	T0RH = 0x24;			// set reload high value 
-//	T0RL = 0x00;			// set reload low value
-//	T0H = 0x00;				// timer byte high = 00000000
-//	T0L = 0x01;				// timer byte low = 00000001
-//	T0CTL = 0x81;			// 1000 0001 // enable and continious mode
-	EI();
 }
 
 void initVideoBuffer( struct controlData * ctrlData ){
 	char i,j;
 	for (i = 0; i < 4; i++){
 		for (j = 0; j < 5; j++){
-			(*ctrlData).videoBuffer[i][j] = character_data[ 48 - 32 ][ j ];
+			(*ctrlData).videoBuffer[i][j] = character_data[ 16 ][ j ];
 		}
-		(*ctrlData).videoBuffer[i][5] = 0;
 	}
 }
 
 void LEDsetString(struct controlData * ctrlData ){
-	int i,j, n = (*ctrlData).point;
+	char i,j;
+ 	int n = (*ctrlData).point;
 	for ( i = 3; i >= 0; i--){
 		for ( j = 0; j < 5; j++){
 			(*ctrlData).videoBuffer[i][j] = character_data[ (n % 10) + 16 ][ j ];
 		}
 		n /= 10;
-		(*ctrlData).videoBuffer[i][5] = 0;
 	}
 }
 
 void LEDupdate( struct controlData * ctrlData ){
-	int i,j;
-	static int karakter = 0, cl = 4, count = 0;
+	static char karakter = 0, Coll = 4, count = 0;
 	static char col = 0xFE;									///// 1111 1110
 	PEOUT &= col;									///// tænder for den kolonne vi vil vise
-	PGOUT |= (*ctrlData).videoBuffer[ karakter ][ cl ];			///// tænder for de dioder der skal vises på den kolonne
+	PGOUT |= (*ctrlData).videoBuffer[ karakter ][ Coll ];	///// tænder for de dioder der skal vises på den kolonne
 	switch (karakter) {								///// vælger hvilket display
 		case 0 :
 			PEOUT |= 0x80;							///// clock 1 high
@@ -72,9 +59,9 @@ void LEDupdate( struct controlData * ctrlData ){
 			karakter++;
 	} else { 
 		karakter = 0;
-		if ( cl > 0){
+		if ( Coll > 0){
 			col |= 0x1F;
-			switch ( cl ) {	
+			switch ( Coll ) {	
 				case 4 : col &= 0xFD;
 					break;
 				case 3 : col &= 0xFB;
@@ -85,10 +72,10 @@ void LEDupdate( struct controlData * ctrlData ){
 					break;
 				case 0 : col &= 0xFE;
 					break;
-			} cl--;
+			} Coll--;
 		} else {
 			col = 0xFE;
-			cl = 4;
+			Coll = 4;
 		}
 	}
 }

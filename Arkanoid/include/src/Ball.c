@@ -19,8 +19,8 @@ void despawn(struct BallPos * ball ){
 	printf("%c", 32 );	
 }
 
-void drawBall(struct BallPos * ball, short strikerPosition ){
-	int i;
+void drawBall(struct BallPos * ball, unsigned char strikerPosition ){
+	unsigned char i;
 	if ( (*ball).ballStarted == 1){
 		color(6,0);
 		gotoxy((*ball).x >> 14 ,(*ball).y >> 14); 	//goes to old ball position
