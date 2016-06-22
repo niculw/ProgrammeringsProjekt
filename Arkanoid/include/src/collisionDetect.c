@@ -21,12 +21,12 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 	if ( ballX <= 2 || ballX >= RESOLUTION_X - 1 ){		// window sides hit
 		if ( ballY <= 2 ){								// ensures the corners will reflext proterly instead of bugging outside of borders
 			return 8;
-		} else if ( (*ball).yV < 0 && (( ballY - 1 ) >> 1 ) != ballYArray ){	// ball is going up and near side block
+		} else if ( ((*ball).yV < 0) && ((( ballY - 1 ) >> 1 ) != ballYArray) && (ballY < 49)){	// ball is going up and near side block
 			if (( blocks[ ballYArray - 1 ][ ballXArray ] & 0x01 ) == 0x01 ){		// check if block is active
 				updateBlock( &blocks[ ballYArray - 1 ][ ballXArray ], ballYArray - 1 , ballXArray, ctrlData );
 				return 8;
 			} else return 1;
-		} else if ( (*ball).yV > 0 && (( ballY + 1 ) >> 1 ) != ballYArray ){	// ball is going down and near side block
+		} else if ( ((*ball).yV > 0) && ((( ballY + 1 ) >> 1 ) != ballYArray) && (ballY < 49)){	// ball is going down and near side block
 			if (( blocks[ ballYArray + 1 ][ ballXArray ] & 0x01 ) == 0x01 ){		// check if block is active
 				updateBlock( &blocks[ ballYArray + 1 ][ ballXArray ], ballYArray + 1 , ballXArray, ctrlData );
 				return 8;
@@ -70,25 +70,25 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 					debug++;*/
 				if ( (( ballXOffset + 1 ) >> 3 ) != ballXArray ) {		// så står der en blok til højre for bolden
 					if ( (( ballY + 1 ) >> 1 ) != ballYArray ) {	// så står der OGSÅ en blok under bolden
-						if ( ( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 == 0x01 )
-							&& ( blocks[ ballYArray + 1 ][ ballXArray ] & 0x01 == 0x01  ) ){	// er der noget på disse positioner
+						if ( (( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 ) == 0x01 )
+							&& (( blocks[ ballYArray + 1 ][ ballXArray ] & 0x01 ) == 0x01  ) ){	// er der noget på disse positioner
 							updateBlock( &blocks[ ballYArray ][ ballXArray + 1 ], ballYArray , ballXArray + 1, ctrlData);
 							updateBlock( &blocks[ ballYArray + 1 ][ ballXArray ], ballYArray + 1 , ballXArray, ctrlData );
 							return 8;										// vend 180 grader
-						} else if ( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 == 0x01 ) {		// der er kun en aktiv blok til højre for blokken
+						} else if (( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 ) == 0x01 ) {		// der er kun en aktiv blok til højre for blokken
 							updateBlock( &blocks[ ballYArray ][ ballXArray + 1 ], ballYArray , ballXArray + 1, ctrlData );
 							return 1;
-						} else if ( blocks[ ballYArray + 1 ][ ballXArray ] & 0x01 == 0x01){ // der er kun en aktiv blok under bolden
+						} else if (( blocks[ ballYArray + 1 ][ ballXArray ] & 0x01 ) == 0x01){ // der er kun en aktiv blok under bolden
 							updateBlock( &blocks[ ballYArray + 1 ][ ballXArray ], ballYArray + 1 , ballXArray, ctrlData );
 							return 2;
-						} else if ( blocks[ ballYArray + 1 ][ ballXArray + 1 ] & 0x01 == 0x01 ){
+						} else if (( blocks[ ballYArray + 1 ][ ballXArray + 1 ] & 0x01 ) == 0x01 ){
 							updateBlock( &blocks[ ballYArray + 1 ][ ballXArray + 1 ], ballYArray + 1 , ballXArray + 1, ctrlData );
 							return 8;	
 						} else {
 							return 0;
 						}
 					} else {											// vi rammer kun en blok til højre for bolden
-						if ( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 == 0x01 ) { // er denne blok aktiv ?
+						if (( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 ) == 0x01 ) { // er denne blok aktiv ?
 							updateBlock( &blocks[ ballYArray ][ ballXArray + 1 ], ballYArray , ballXArray + 1, ctrlData);
 							return 1;
 						} else {
@@ -97,7 +97,7 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 					}
 				} else {													// så står der ingen blok til højre for bolden
 					if ( (( ballY + 1 ) >> 1 ) != ballYArray ) {	// så står der en blok under bolden
-						if ( ( blocks[ballYArray + 1 ][ ballXArray ] & 0x01 == 0x01 )){ // er der noget på denne position
+						if ( (( blocks[ballYArray + 1 ][ ballXArray ] & 0x01 ) == 0x01 )){ // er der noget på denne position
 							updateBlock( &blocks[ ballYArray + 1 ][ ballXArray ], ballYArray + 1 , ballXArray, ctrlData );
 							return 2;										
 						} else {
@@ -113,25 +113,25 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 						debug++;*/
 				if ( (( ballXOffset - 1 ) >> 3 ) != ballXArray ) {		// så står der en blok til venstre for bolden
 					if ( (( ballY + 1 ) >> 1 ) != ballYArray ) {		// så står der OGSÅ en blok under bolden
-						if ( ( blocks[ ballYArray ][ ballXArray - 1 ] & 0x01 == 0x01 )
-							&& ( blocks[ ballYArray + 1 ][ ballXArray ] & 0x01 == 0x01  ) ){	// er der noget på disse positioner
+						if ( (( blocks[ ballYArray ][ ballXArray - 1 ] & 0x01 ) == 0x01 )
+							&& (( blocks[ ballYArray + 1 ][ ballXArray ] & 0x01 ) == 0x01  ) ){	// er der noget på disse positioner
 							updateBlock( &blocks[ ballYArray ][ ballXArray - 1], ballYArray , ballXArray - 1, ctrlData );
 							updateBlock( &blocks[ ballYArray + 1 ][ ballXArray ], ballYArray + 1 , ballXArray, ctrlData );
 							return 8;										// vend 180 grader
-						} else if ( blocks[ ballYArray ][ ballXArray - 1 ] & 0x01 == 0x01 ) {// der er kun en aktiv blok til venstre for blokken
+						} else if (( blocks[ ballYArray ][ ballXArray - 1 ] & 0x01 ) == 0x01 ) {// der er kun en aktiv blok til venstre for blokken
 							updateBlock( &blocks[ ballYArray ][ ballXArray - 1 ], ballYArray , ballXArray - 1, ctrlData );
 							return 1;
-						} else if ( blocks[ ballYArray + 1 ][ ballXArray ] & 0x01 == 0x01){ // der er kun en aktiv blok under bolden
+						} else if (( blocks[ ballYArray + 1 ][ ballXArray ] & 0x01 ) == 0x01){ // der er kun en aktiv blok under bolden
 							updateBlock( &blocks[ ballYArray + 1 ][ ballXArray ], ballYArray + 1 , ballXArray, ctrlData );
 							return 2;
-						} else if ( blocks[ ballYArray + 1 ][ ballXArray - 1 ] & 0x01 == 0x01 ){
+						} else if (( blocks[ ballYArray + 1 ][ ballXArray - 1 ] & 0x01 ) == 0x01 ){
 							updateBlock( &blocks[ ballYArray + 1 ][ ballXArray - 1 ], ballYArray + 1 , ballXArray - 1, ctrlData );
 							return 8;
 						} else {
 							return 0;
 						}
 					} else {											// vi rammer kun en blok til venstre for bolden
-						if ( blocks[ ballYArray ][ ballXArray - 1 ] & 0x01 == 0x01 ) { // er denne blok aktiv ?
+						if (( blocks[ ballYArray ][ ballXArray - 1 ] & 0x01 ) == 0x01 ) { // er denne blok aktiv ?
 							updateBlock( &blocks[ ballYArray ][ ballXArray - 1 ], ballYArray , ballXArray - 1, ctrlData );
 							return 1;
 						} else {
@@ -161,18 +161,18 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 						debug++;*/
 				if ( (( ballXOffset + 1 ) >> 3 ) != ballXArray ) {		// så står der en blok til højre for bolden
 					if ( (( ballY - 1 ) >> 1 ) != ballYArray ) {	// så står der OGSÅ en blok over bolden
-						if ( ( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 == 0x01 )
-							&& ( blocks[ ballYArray - 1 ][ ballXArray ] & 0x01 == 0x01  ) ){	// er der noget på disse positioner
+						if ( (( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 ) == 0x01 )
+							&& (( blocks[ ballYArray - 1 ][ ballXArray ] & 0x01 ) == 0x01  ) ){	// er der noget på disse positioner
 							updateBlock( &blocks[ ballYArray ][ ballXArray + 1 ], ballYArray , ballXArray + 1, ctrlData );
 							updateBlock( &blocks[ ballYArray - 1 ][ ballXArray ], ballYArray - 1 , ballXArray, ctrlData );
 							return 8;										// vend 180 grader
-						} else if ( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 == 0x01 ) {// der er kun en aktiv blok til højre for blokken
+						} else if (( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 ) == 0x01 ) {// der er kun en aktiv blok til højre for blokken
 							updateBlock( &blocks[ ballYArray ][ ballXArray + 1 ], ballYArray , ballXArray + 1, ctrlData );
 							return 1;
-						} else if ( blocks[ ballYArray - 1 ][ ballXArray ] & 0x01 == 0x01){ // der er kun en aktiv blok over bolden
+						} else if (( blocks[ ballYArray - 1 ][ ballXArray ] & 0x01 ) == 0x01){ // der er kun en aktiv blok over bolden
 							updateBlock( &blocks[ ballYArray - 1 ][ ballXArray ], ballYArray - 1 , ballXArray, ctrlData );
 							return 2;
-						} else if ( blocks[ ballYArray - 1 ][ ballXArray + 1 ] & 0x01 == 0x01 ){
+						} else if (( blocks[ ballYArray - 1 ][ ballXArray + 1 ] & 0x01 ) == 0x01 ){
 							updateBlock( &blocks[ ballYArray - 1 ][ ballXArray + 1 ], ballYArray - 1 , ballXArray + 1, ctrlData );
 							return 8;
 						} else {
@@ -182,7 +182,7 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 							return 0;
 						}
 					} else {											// vi rammer kun en blok til højre for bolden
-						if ( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 == 0x01 ) { // er denne blok aktiv ?
+						if (( blocks[ ballYArray ][ ballXArray + 1 ] & 0x01 ) == 0x01 ) { // er denne blok aktiv ?
 							updateBlock( &blocks[ ballYArray ][ ballXArray + 1 ], ballYArray , ballXArray + 1, ctrlData );
 							return 1;
 						} else {
@@ -194,7 +194,7 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 					}
 				} else {													// så står der ingen blok til højre for bolden
 					if ( (( ballY - 1 ) >> 1 ) != ballYArray ) {			// så står der en blok over bolden
-						if ( ( blocks[ballYArray - 1 ][ ballXArray ] & 0x01 == 0x01  )){ // er der noget på denne position
+						if ( (( blocks[ballYArray - 1 ][ ballXArray ] & 0x01 ) == 0x01  )){ // er der noget på denne position
 							updateBlock( &blocks[ ballYArray - 1 ][ ballXArray ], ballYArray - 1 , ballXArray, ctrlData );
 						/*	gotoxy(175,debug);
 							printf("HIT! O %d %d %d %d nH", ballXArray, ballYArray - 1, ballX , ballY);
@@ -232,7 +232,7 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 						} else if (( blocks[ ballYArray - 1 ][ ballXArray ] & 0x01 ) == 0x01){ 	// der er kun en aktiv blok over bolden
 							updateBlock( &blocks[ ballYArray - 1 ][ ballXArray ], ballYArray - 1 , ballXArray, ctrlData );
 							return 2;
-						} else if ( blocks[ ballYArray - 1 ][ ballXArray - 1 ] & 0x01 == 0x01 ){
+						} else if (( blocks[ ballYArray - 1 ][ ballXArray - 1 ] & 0x01 ) == 0x01 ){
 							updateBlock( &blocks[ ballYArray - 1 ][ ballXArray - 1 ], ballYArray - 1 , ballXArray - 1, ctrlData );
 							return 8;
 						} else {
@@ -250,7 +250,7 @@ int collisionDetect( struct BallPos * ball, short strikerPos , char blocks[25][2
 					}
 				} else {													// så står der ingen blok til venstre for bolden
 					if ( (( ballY - 1 ) >> 1 ) != ballYArray ) {	// så står der en blok over bolden
-						if ( ( blocks[ ballYArray - 1 ][ ballXArray ] & 0x01 == 0x01  )){ // er der noget på denne position
+						if ( (( blocks[ ballYArray - 1 ][ ballXArray ] & 0x01 ) == 0x01  )){ // er der noget på denne position
 						/*	gotoxy(175,debug);
 							printf("HIT O %d %d %d %d nV", ballXArray, ballYArray - 1, ballX, ballY);
 							debug++;*/

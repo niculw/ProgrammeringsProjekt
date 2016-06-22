@@ -32,15 +32,28 @@ void printLife( struct controlData * ctrlData ) {
 		printf(" ##### ");
 		gotoxy( RESOLUTION_X + 3, 4 + i * 5 + 3 );
 		printf("  ###  ");
-		gotoxy( RESOLUTION_X + 3, 4 + i * 5 + 4);
+		gotoxy( RESOLUTION_X + 3, 4 + i * 5 + 4 );
 		printf("   #   ");
 	} 
 }
 
 void addLife( struct controlData * ctrlData ) {
 	if ( 5 > (*ctrlData).playerLife ) {
+		if ((*ctrlData).playerLife > 2)
+			color(5,0);
+		else color(1,0);
 		(*ctrlData).playerLife++;
 		printLife( ctrlData );
+		gotoxy( RESOLUTION_X + 3, (*ctrlData).playerLife * 5 - 5 );
+		printf(" #   # ");
+		gotoxy( RESOLUTION_X + 3, (*ctrlData).playerLife * 5 - 4 );
+		printf("### ###");
+		gotoxy( RESOLUTION_X + 3, (*ctrlData).playerLife * 5 - 3 );
+		printf(" ##### ");
+		gotoxy( RESOLUTION_X + 3, (*ctrlData).playerLife * 5 - 2 );
+		printf("  ###  ");
+		gotoxy( RESOLUTION_X + 3, (*ctrlData).playerLife * 5 - 1 );
+		printf("   #   ");
 	}
 }
 

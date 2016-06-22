@@ -35,18 +35,35 @@ void despawn((struct powerup * p){
 	}
 
 
-void powerup(int bh,struct powerup * p, struct lives * L, collisionDetect, struct BallPos * ball){
+void powerup(int bh,struct powerup * p, struct lives * L, collisionDetect, int STRIKER_WIDTH, struct BallPos * ball);
 	if (bh == 1){
-		int r = rand(10); // random tal
+		int r = rand(15); // random tal
 		if (r == 8){
 			initPowerup();
 			drawPowerup(40);
 
 			if (collisionDetect > 10){
 				addLife();
-}
-}
+			}
+		}
+
 		else if (r == 9){
+			initPowerup();
+			drawPowerup(2F);
+			if (collisionDetect > 10){
+				STRIKER_WIDTH = STRIKER_WIDTH - 5;
+			}
+		}
+
+		else if (r == 10){
+		initPowerup();
+		drawPowerup(2B);
+		if (collisionDetect > 10){
+		STRIKER_WIDTH = STRIKER_WIDTH + 5;
+ 			}
+		}
+
+		else if (r == 11){
 		initPowerup();
 		drawPowerup(2A);
 		if (collisionDetect > 10){
@@ -54,19 +71,43 @@ void powerup(int bh,struct powerup * p, struct lives * L, collisionDetect, struc
 		while (collisionDetect > 0) {
 		drawBall();
 		}
-		}
-		}
-		else if (r == 10)[]
-		if (collisionDetect > 10){
-		removeLife();
  		}
 		}
+
+		else if (r == 12){
+		initPowerup();
+		drawPowerup(246);
+		if (collisionDetect > 10){
+		(*L).Lives--;
+}
+		} 
+
+		else if (r == 13){
+		initPowerup();
+		drawPowerup(253);
+
+if (collisionDetect > 10){
+		(*ball).xV = (*ball).xV / 2;
+		(*ball).yV = (*ball).yV / 2;
+}
+		}
+
+		else if (r == 14){
+		initPowerup();
+		drawPowerup(171);
+		if (collisionDetect > 10){
+		(*ball).xV = (*ball).xV * 2;
+		(*ball).yV = (*ball).yV * 2;
+
+		}
+		}
+
 
 if (collisionDetect == -1 || collisionDetect > 10){
 	despawn(); 
 }
-}
-bh = 0;
+
+button = 0;
 }
 
 
