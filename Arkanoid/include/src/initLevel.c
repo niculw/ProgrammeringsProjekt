@@ -87,8 +87,8 @@ void printBlocks( char block[25][22], struct controlData * ctrlData ) {
 					health = '#';
 				} else {
 					health = ( 175 + (( block[i + 1][j + 1] & 0x06 ) >> 1 ));	// trækker liv ud af blok info
-				//	(*ctrlData).blockCount++;		//// normal mode non cheating
-					(*ctrlData).blockCount = 1;		//// fast LEVEL CHEAT
+					(*ctrlData).blockCount++;		//// normal mode non cheating
+				//	(*ctrlData).blockCount = 1;		//// fast LEVEL CHEAT
 				}
 				color( ( block[i + 1][j + 1] >> 4 ) , 0);		// sætter farven på blokken
 				gotoxy( 2 + ( j << 3 ) , 2 + (i << 1)  );	// går til blok position
