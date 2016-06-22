@@ -58,6 +58,7 @@ void initMenu(){
 
 void menuSel( char i ){
 	static char lastSel = 1;
+	color(7,0);
 	////////////////////// Sletter den gamle menu selection
 	switch ( lastSel ) {
 		case 1 :
