@@ -1,14 +1,5 @@
 # ProgrammeringsProjekt
 
-Bugs:
-Ingen pt -,-
-
-
-Missing functions:
-- Highscore 
-- Powerups ( might not be happening ) 
-- LED display for life or points ( needs more testing )
-
 Fixed:
 - menu select error
 - Moved levels to rom
@@ -23,3 +14,4 @@ Added:
 - Points
 - block life
 - Fixed block corner collision.
+- LED display for life or points
