@@ -67,7 +67,7 @@ void removeLife( struct controlData * ctrlData ){
 		gotoxy(GAMEOVER_X,15);
 		printf("##                                         | |  _ / _` | '_ ` _ \\ / _ \\  / _ \\ \\ / / _ \\ '__|                                ##");
 		gotoxy(GAMEOVER_X,16);
-		printf("##                                         | |_| | (_| | | | | | |  __/ | (_) \ V /  __/ |                                   ##");
+		printf("##                                         | |_| | (_| | | | | | |  __/ | (_) \\ V /  __/ |                                   ##");
 		gotoxy(GAMEOVER_X,17);
 		printf("##                                          \\____|\\__,_|_| |_| |_|\\___|  \\___/ \\_/ \\___|_|                                   ##");
 		gotoxy(GAMEOVER_X,18);
