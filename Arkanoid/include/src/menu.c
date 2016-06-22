@@ -27,7 +27,7 @@ void initMenu(){
 	printf("###                                                                                      ###"); gotoxy( XPOS, YPOS + 3 );
 	printf("###             _____ ______   ____  ____  ______       ____   ____  ___ ___    ___      ###"); gotoxy( XPOS, YPOS + 4 );
 	printf("###            / ___/|      T /    T|    \\|      T     /    T /    T|   T   T  /  _]     ###"); gotoxy( XPOS, YPOS + 5 );
-	printf("###  |    |   (   \_ |      |Y  o  ||  D  )      |    Y   __jY  o  || _   _ | /  [_      ###"); gotoxy( XPOS, YPOS + 6 );
+	printf("###  |    |   (   \\_ |      |Y  o  ||  D  )      |    Y   __jY  o  || _   _ | /  [_      ###"); gotoxy( XPOS, YPOS + 6 );
 	printf("###  |    |    \\__  Tl_j  l_j|     ||    /l_j  l_j    |  T  ||     ||  \\_/  |Y    _]     ###"); gotoxy( XPOS, YPOS + 7 );
 	printf("###  |    |    /  \\ |  |  |  |  _  ||    \\  |  |      |  l_ ||  _  ||   |   ||   [_      ###"); gotoxy( XPOS, YPOS + 8 );
 	printf("###  |    |    \\    |  |  |  |  |  ||  .  Y |  |      |     ||  |  ||   |   ||     T     ###"); gotoxy( XPOS, YPOS + 9 );
@@ -37,8 +37,8 @@ void initMenu(){
 	printf("###             |  T  Tl    j /    T|  T  T/ ___/  /  ] /   \\ |    \\   /  _]/ ___/       ###"); gotoxy( XPOS, YPOS + 13 );
 	printf("###  |    |     |  l  | |  T Y   __j|  l  (   \\_  /  / Y     Y|  D  ) /  [_(   \\_        ###"); gotoxy( XPOS, YPOS + 14 );
 	printf("###  |    |     |  _  | |  | |  T  ||  _  |\\__  T/  /  |  O  ||    / Y    _]\\__  T       ###"); gotoxy( XPOS, YPOS + 15 );
-	printf("###  |    |     |  |  | |  | |  l_ ||  |  |/  \\ /   \\_ |     ||    \\ |   [_ /  \ |       ###"); gotoxy( XPOS, YPOS + 16 );
-	printf("###  |    |     |  |  | j  l |     ||  |  |\\    \     |l     !|  .  Y|     T\\    |       ###"); gotoxy( XPOS, YPOS + 17 );
+	printf("###  |    |     |  |  | |  | |  l_ ||  |  |/  \\ /   \\_ |     ||    \\ |   [_ /  \\ |       ###"); gotoxy( XPOS, YPOS + 16 );
+	printf("###  |    |     |  |  | j  l |     ||  |  |\\    \\     |l     !|  .  Y|     T\\    |       ###"); gotoxy( XPOS, YPOS + 17 );
 	printf("###             l__j__j|____jl___,_jl__j__j \\___j\\____j \\___/ l__j\\_jl_____j \\___j       ###"); gotoxy( XPOS, YPOS + 18 );
 	printf("###                                                                                      ###"); gotoxy( XPOS, YPOS + 19 );
 	printf("###              __ __    ___  _      ____                                               ###"); gotoxy( XPOS, YPOS + 20 );
