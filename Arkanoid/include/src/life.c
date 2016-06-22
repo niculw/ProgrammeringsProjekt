@@ -7,7 +7,7 @@
 #include "life.h"
 #include "game.h"
 
-#define GAMEOVER_X 25
+#define GAMEOVER_X 17
 
 void printLife( struct controlData * ctrlData ) {			
 	char i;
@@ -75,7 +75,7 @@ void removeLife( struct controlData * ctrlData ){
 		gotoxy(GAMEOVER_X,19);
 		printf("##                                                      Du fik %5d Point                                                   ##",(*ctrlData).point);
 		gotoxy(GAMEOVER_X,20);
-		printf("##                                                  Press SW2 to restart to level 1                                          ##");
+		printf("##                                                  Press SW2 to restart to main Menu                                        ##");
 		gotoxy(GAMEOVER_X,21);
 		printf("###############################################################################################################################");
 		gotoxy(GAMEOVER_X,22);
