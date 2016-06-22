@@ -1,22 +1,9 @@
 #include <eZ8.h>             // special encore constants, macros and flash routines
 #include <sio.h>             // special encore serial i/o routines
-#include <string.h>
-#include "defines.h"
 #include "ansi.h"
-#include "lut.h"
-//#include "charset.h"		 // indkluderet i LED.c
-//#include "LED.h"
-//#include "StopWatch.h"
-#include "initLevel.h"
-#include "Striker.h"
-#include "angleCalc.h"
-#include "block.h"
-#include "ball.h"
-#include "collisionDetect.h"
 #include "game.h"
 #include "io.h"
 #include "menu.h"
-//#include "life.h"
 #include "help.h"
 
 int halfMilisec = 0;
@@ -27,37 +14,36 @@ void timer0int() {
 }
 
 void initTimer0() {
-	DI();					// disable inteupt
+	DI();							// disable inteupt
 	//////////////////////////////////////////////////// setup interupts to low prioritet
-	SET_VECTOR(TIMER0, timer0int);
-	IRQ0ENH &= 0x00;		// low prioitet
-	IRQ0ENL |= 0x20;		// low prioitet
+	SET_VECTOR(TIMER0, timer0int);	// set interupt reference
+	IRQ0ENH &= 0x00;				// low prioitet
+	IRQ0ENL |= 0x20;				// low prioitet
 	//////////////////////////////////////////////////// timer 0 config to 0.5ms interval
-	T0RH = 0x24;			// set reload high value 
-	T0RL = 0x00;			// set reload low value
-	T0H = 0x00;				// timer byte high = 00000000
-	T0L = 0x01;				// timer byte low = 00000001
-	T0CTL = 0x81;			// 1000 0001 // enable and continious mode
+	T0RH = 0x24;					// set reload high value 
+	T0RL = 0x00;					// set reload low value
+	T0H = 0x00;						// timer byte high = 00000000
+	T0L = 0x01;						// timer byte low = 00000001
+	T0CTL = 0x81;					// 1000 0001 // enable and continious mode
 	//////////////////////////////////////////////////// 
-	EI();					// enable interupts
+	EI();							// enable interupts
 }
 
 
 void main() {
-	char i = 0, j = 0, menuPunkt = 1, menuSelector = 0;
-	char status;
+	char menuPunkt = 1, menuSelector = 0;
 	char oldkey = 0 , newkey;
 	keysetup();						// sæt registre til knapperne
 	init_uart(_UART0,_DEFFREQ,_DEFBAUD);
 	resetbgcolor;
 	initTimer0();
-	printf("%c[?25l",0x1B);			// fjerner kurseren
+	printf("%c[?25l",0x1B);			// removes curser
 	clrscr();
-	initMenu();
+	initMenu();	
 	menuSel(menuPunkt);
 	do {
 		newkey = readKey();
-		if( 0 != newkey ) {					// hvis vi har trykket på en knap
+		if( 0 != newkey ) {					// vi har trykket på en knap
 			if ( halfMilisec > 500 ) {								
 				halfMilisec = 0;
 				if ( 1 == newkey ){
@@ -136,9 +122,6 @@ void main() {
 				}
 			}
 		} 
-//		else {	////// hvis vi ikke trykker på knappen.
-//			halfMilisec = 0;
-//		}
 	} while (1 != 2);
 }
 

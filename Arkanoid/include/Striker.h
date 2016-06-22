@@ -2,7 +2,7 @@
 #define _STRIKER_H_
 
 void initStriker();
-void drawStriker( int position );
+void drawStriker( unsigned char position );
 void moveStriker();
 
 #endif

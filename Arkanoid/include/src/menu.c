@@ -2,9 +2,11 @@
 #include <sio.h>             // special encore serial i/o routines
 #include "menu.h"
 #include "ansi.h"
+#include "game.h"
 
 #define XPOS 35
 #define YPOS 13
+#define WIN 17
 
 void initMenu(){
 	color(5,0);
@@ -54,8 +56,8 @@ void initMenu(){
 	printf("############################################################################################"); gotoxy( XPOS, YPOS + 30 );
 }
 
-void menuSel( short i ){
-	static int lastSel = 1;
+void menuSel( char i ){
+	static char lastSel = 1;
 	////////////////////// Sletter den gamle menu selection
 	switch ( lastSel ) {
 		case 1 :
@@ -97,4 +99,24 @@ void menuSel( short i ){
 	printf("#  #\n");
 	goRight( XPOS + 5 );
 	lastSel = i;
+}
+
+void printWin( struct controlData * ctrlData ){
+		color( 5,0 );
+		gotoxy(WIN,10);
+		printf("###############################################################################################################################");gotoxy(WIN,11);
+		printf("###############################################################################################################################");gotoxy(WIN,12);
+		printf("##                                                                                                                           ##");gotoxy(WIN,13);
+		printf("##                          ____                            _         _       _   _                 _                        ##");gotoxy(WIN,14);
+		printf("##                         / ___|___  _ __   __ _ _ __ __ _| |_ _   _| | __ _| |_(_) ___  _ __  ___| |                       ##");gotoxy(WIN,15);
+		printf("##                        | |   / _ \| '_ \ / _` | '__/ _` | __| | | | |/ _` | __| |/ _ \| '_ \/ __| |                       ##");gotoxy(WIN,16);
+		printf("##                        | |__| (_) | | | | (_| | | | (_| | |_| |_| | | (_| | |_| | (_) | | | \__ \_|                       ##");gotoxy(WIN,17);
+		printf("##                         \____\___/|_| |_|\__, |_|  \__,_|\__|\__,_|_|\__,_|\__|_|\___/|_| |_|___(_)                       ##");gotoxy(WIN,18);
+		printf("##                                           |___/                                                                           ##");gotoxy(WIN,19);
+		printf("##                                                                                                                           ##");gotoxy(WIN,20);
+		printf("##                                                      Du fik %5d Point                                                   ##",(*ctrlData).point);gotoxy(WIN,21);
+		printf("##                                                                                                                           ##");gotoxy(WIN,22);
+		printf("##                                                  Press SW2 to go to main Menu                                             ##");gotoxy(WIN,23);
+		printf("###############################################################################################################################");gotoxy(WIN,24);
+		printf("###############################################################################################################################");
 }

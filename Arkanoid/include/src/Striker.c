@@ -5,7 +5,7 @@
 #include "defines.h"
 
 void initStriker(){
-	int i;
+	unsigned char i;
 	color(2,0);
 	for ( i = 0; i < STRIKER_WIDTH ; i++){
 		gotoxy( STRIKER_START_POSITION + i, RESOLUTION_Y - 1);
@@ -13,8 +13,8 @@ void initStriker(){
 	}
 }
 
-void drawStriker( int position ){
-	static int oldStrikerPos = STRIKER_START_POSITION;
+void drawStriker( unsigned char position ){
+	static unsigned char oldStrikerPos = STRIKER_START_POSITION;
 	color(2,0);
 	//int i;
 	if ( oldStrikerPos < position) {		//// kører vi til højre
